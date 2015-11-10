@@ -40,13 +40,6 @@ let produce (output : TextWriter) (indent : Indent) (part : FilePart) : Indent =
         writePrefixedWrappedLines output indent CommentStart typeInfo.fileComment
         output.WriteLine()
 
-        writeUnbrokenLine output indent
-            "#nowarn \"9\" // Uses of this construct may result in the generation of unverifiable .NET IL code."
-        output.WriteLine()
-
-        writeUnbrokenLine output indent "open System.Runtime.InteropServices"
-        output.WriteLine()
-
         indent
 
     | FileEnd _ -> noop
@@ -59,6 +52,15 @@ let produce (output : TextWriter) (indent : Indent) (part : FilePart) : Indent =
         indent.WriteIndent(output)
         writeUnbrokenLine output indent (sprintf "module %s" typeInfo.moduleName)
         output.WriteLine()
+
+        writeUnbrokenLine output indent
+            "#nowarn \"9\" // Uses of this construct may result in the generation of unverifiable .NET IL code."
+        output.WriteLine()
+
+        writeUnbrokenLine output indent "open System"
+        writeUnbrokenLine output indent "open System.Runtime.InteropServices"
+        output.WriteLine()
+
         indent
 
     | ModuleEnd _ -> noop
