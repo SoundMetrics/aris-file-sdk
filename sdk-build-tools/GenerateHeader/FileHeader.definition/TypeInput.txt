@@ -1,0 +1,2 @@
+ModuleName,TypeName,Description,Notes,FileComment
+File,FileHeader,Defines the metadata at the start of an ARIS recording,,OutputFile.fs
