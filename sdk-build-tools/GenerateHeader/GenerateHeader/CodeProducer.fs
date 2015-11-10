@@ -15,22 +15,20 @@ with
             failwith "Unindent caused a negative indent"
         { level = newLevel }
 
-    member i.WriteIndent(stream : StreamWriter) =
+    member i.Width = i.level * 4
+    member i.WriteIndent(stream : TextWriter) =
 
         for i = 0 to i.level - 1 do
             stream.Write("    ")
 
-/// Common arguments for code producer calls.
-type ProducerBasics = {
-    indent : Indent
-    stream : StreamWriter
-}
 
 /// Information about the type being generated.
 type TypeInfo = {
-    name : string
+    moduleName : string
+    typeName : string
     description : string
     notes : string
+    fileComment : string
 }
 
 /// Indicates whether the field is a scalar or vector;
@@ -47,7 +45,7 @@ type FieldType =
 | Int32
 | Float32
 | Float64
-| Char8
+| String
 
 /// Describes a field.
 type FieldInfo = {
@@ -56,17 +54,18 @@ type FieldInfo = {
     fieldCat : FieldCategory
     description : string
     note : string
+    obsoleteNote : string
 }
 
-/// Defines functions that are called on code producers to output the
-/// appropriate code.
-type ICodeProducer =
+type FilePart =
+| FileBegin of TypeInfo
+| FileEnd of TypeInfo
+| NamespaceBegin of TypeInfo
+| NamespaceEnd of TypeInfo
+| ModuleBegin of TypeInfo
+| ModuleEnd of TypeInfo
+| TypeBegin of TypeInfo
+| TypeEnd of TypeInfo
+| Fields of FieldInfo array
 
-    abstract member WriteTypeComments   : ProducerBasics -> TypeInfo -> unit
-    abstract member WriteTypePreface    : ProducerBasics -> TypeInfo -> unit
-    abstract member WriteTypeBegin      : ProducerBasics -> TypeInfo -> unit
-    abstract member WriteTypeEnd        : ProducerBasics -> TypeInfo -> unit
-
-    abstract member WritFieldComments   : ProducerBasics -> FieldInfo -> unit
-    abstract member WritFieldPreface    : ProducerBasics -> FieldInfo -> unit
-    abstract member WritField           : ProducerBasics -> FieldInfo -> unit
+type CodeProducer = TextWriter -> Indent -> FilePart -> Indent
