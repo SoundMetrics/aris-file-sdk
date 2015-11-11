@@ -28,6 +28,7 @@
     <OtherFlags>--warnon:1182</OtherFlags>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <StartArguments>-g C -i ..\..\..\FileHeader.definition -o ..\..\..\FileHeader.h</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +43,7 @@
     <OtherFlags>--warnon:1182</OtherFlags>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <StartArguments>-g F# -i ..\..\..\FileHeader.definition -o ..\..\..\FileHeader.output</StartArguments>
   </PropertyGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
@@ -63,13 +65,19 @@
     <Compile Include="CodeProducer.fs" />
     <Compile Include="FormattingHelp.fs" />
     <Compile Include="FSharpProducer.fs" />
+    <Compile Include="CProducer.fs" />
     <Compile Include="FieldParser.fs" />
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="ProgramOptions.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="CommandLine">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FSharp.Data">
       <HintPath>..\packages\FSharp.Data.2.2.5\lib\net40\FSharp.Data.dll</HintPath>
       <Private>True</Private>

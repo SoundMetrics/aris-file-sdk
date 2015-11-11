@@ -45,10 +45,9 @@ let parseType (row : CsvRow) =
     {   moduleName = row.["ModuleName"].Trim()
         typeName = row.["TypeName"].Trim()
         description = row.["Description"].Trim()
-        notes = row.["Notes"].Trim()
-        fileComment = row.["FileComment"].Trim() }
+        notes = row.["Notes"].Trim() }
 
-let processStream (produce : CodeProducer) (typeInput : Stream)
+let processStream filename (produce : CodeProducer) (typeInput : Stream)
                   (fieldInput : Stream) (output : TextWriter) =
 
     let typeInfo = parseType (CsvFile.Load(typeInput).Rows |> Seq.head)
@@ -67,11 +66,11 @@ let processStream (produce : CodeProducer) (typeInput : Stream)
         NamespaceEnd typeInfo
         FileEnd typeInfo
     ]
-    |> List.fold (produce output) { level = 0 }
+    |> List.fold (produce filename output) { level = 0 }
     |> ignore
 
-let processFile (producer : CodeProducer) typeInputPath fieldInputPath (output : TextWriter) =
-
-    use typeInput = File.Open(typeInputPath, FileMode.Open, FileAccess.Read, FileShare.Read)
-    use fieldInput = File.Open(fieldInputPath, FileMode.Open, FileAccess.Read, FileShare.Read)
-    processStream producer typeInput fieldInput output
+//let processFile filename (producer : CodeProducer) typeInputPath fieldInputPath (output : TextWriter) =
+//
+//    use typeInput = File.Open(typeInputPath, FileMode.Open, FileAccess.Read, FileShare.Read)
+//    use fieldInput = File.Open(fieldInputPath, FileMode.Open, FileAccess.Read, FileShare.Read)
+//    processStream producer typeInput fieldInput output
