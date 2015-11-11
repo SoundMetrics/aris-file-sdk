@@ -20,37 +20,41 @@ let typeMap =
     |> Map.ofList
 
 
-let produce filename (output : TextWriter) (indent : Indent) (part : FilePart) : Indent =
+let produce filename (output : TextWriter) (modifier : string) (indent : Indent) (part : FilePart) : Indent =
 
     let noop = indent // Return unmodified indent for no-ops.
 
+    let includeAll = modifier.ToUpper() <> "FIELDSONLY"
     let getSymbol (typeName : string) = sprintf "ARIS_%s_H" (typeName.ToUpper())
 
     match part with
     | FileBegin _ ->
-        writePrefixedWrappedLines output indent CommentStart filename
-        output.WriteLine()
+        if includeAll then
+            writePrefixedWrappedLines output indent CommentStart filename
+            output.WriteLine()
 
         indent
 
     | FileEnd _ -> noop
 
     | NamespaceBegin typeInfo ->
-        let symbol = getSymbol typeInfo.typeName
-        writeUnbrokenLine output indent (sprintf "#ifndef %s" symbol)
-        writeUnbrokenLine output indent (sprintf "#define %s" symbol)
-        output.WriteLine()
+        if includeAll then
+            let symbol = getSymbol typeInfo.typeName
+            writeUnbrokenLine output indent (sprintf "#ifndef %s" symbol)
+            writeUnbrokenLine output indent (sprintf "#define %s" symbol)
+            output.WriteLine()
 
-        writeUnbrokenLine output indent "#include <stdint.h>"
-        output.WriteLine()
+            writeUnbrokenLine output indent "#include <stdint.h>"
+            output.WriteLine()
 
         indent
 
     | NamespaceEnd typeInfo ->
-        output.WriteLine()
+        if includeAll then
+            output.WriteLine()
 
-        let symbol = getSymbol typeInfo.typeName
-        writeUnbrokenLine output indent (sprintf "#endif // !%s" symbol)
+            let symbol = getSymbol typeInfo.typeName
+            writeUnbrokenLine output indent (sprintf "#endif // !%s" symbol)
 
         indent
 
@@ -58,18 +62,21 @@ let produce filename (output : TextWriter) (indent : Indent) (part : FilePart) :
     | ModuleEnd _ -> noop
 
     | TypeBegin typeInfo ->
-        writeUnbrokenLine output indent "#pragma pack(push, 1)"
-        output.WriteLine()
+        if includeAll then
+            writeUnbrokenLine output indent "#pragma pack(push, 1)"
+            output.WriteLine()
 
-        writeUnbrokenLine output indent (sprintf "struct %s {" typeInfo.typeName)
-        output.WriteLine()
+            writeUnbrokenLine output indent (sprintf "struct %s {" typeInfo.typeName)
+            output.WriteLine()
+
         indent
 
     | TypeEnd _ ->
-        writeUnbrokenLine output indent "};"
-        output.WriteLine()
+        if includeAll then
+            writeUnbrokenLine output indent "};"
+            output.WriteLine()
 
-        writeUnbrokenLine output indent "#pragma pack(pop)"
+            writeUnbrokenLine output indent "#pragma pack(pop)"
 
         indent
 

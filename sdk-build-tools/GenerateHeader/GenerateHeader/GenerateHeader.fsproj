@@ -28,7 +28,7 @@
     <OtherFlags>--warnon:1182</OtherFlags>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
-    <StartArguments>-g C -i ..\..\..\FileHeader.definition -o ..\..\..\FileHeader.h</StartArguments>
+    <StartArguments>-g C -i ..\..\..\FileHeader.definition -o ..\..\..\FileHeader.h -m fieldsonly</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

@@ -67,7 +67,7 @@ let main argv =
             use output = new StreamWriter(
                             File.Open(options.OutputPath, FileMode.Create, FileAccess.Write, FileShare.None))
 
-            processStream filename producer typeInput fieldInput output
+            processStream filename options.Modifier producer typeInput fieldInput output
         with
             ex -> Console.WriteLine(sprintf "An error occurred: %s" ex.Message)
     else
