@@ -68,9 +68,3 @@ let processStream filename (produce : CodeProducer) (typeInput : Stream)
     ]
     |> List.fold (produce filename output) { level = 0 }
     |> ignore
-
-//let processFile filename (producer : CodeProducer) typeInputPath fieldInputPath (output : TextWriter) =
-//
-//    use typeInput = File.Open(typeInputPath, FileMode.Open, FileAccess.Read, FileShare.Read)
-//    use fieldInput = File.Open(fieldInputPath, FileMode.Open, FileAccess.Read, FileShare.Read)
-//    processStream producer typeInput fieldInput output
