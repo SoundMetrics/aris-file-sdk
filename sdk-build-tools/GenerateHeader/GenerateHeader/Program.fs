@@ -45,6 +45,7 @@ let openFiles folder =
 let getProducer (language : string) =
 
     match language.ToUpper() with
+    | "C" -> CProducer.produce
     | "F#" -> FSharpProducer.produce
     | lang -> failwith (sprintf "Unexpected language requested: '%s'" lang)
 
@@ -60,12 +61,13 @@ let main argv =
             printfn "Output file:  %s" (Path.GetFullPath(options.OutputPath))
             printfn "Language:     %s" options.Language
 
+            let filename = Path.GetFileName(options.OutputPath)
             let producer = getProducer options.Language
             let fieldInput, typeInput = openFiles options.InputFolder
             use output = new StreamWriter(
                             File.Open(options.OutputPath, FileMode.Create, FileAccess.Write, FileShare.None))
 
-            processStream producer typeInput fieldInput output
+            processStream filename producer typeInput fieldInput output
         with
             ex -> Console.WriteLine(sprintf "An error occurred: %s" ex.Message)
     else

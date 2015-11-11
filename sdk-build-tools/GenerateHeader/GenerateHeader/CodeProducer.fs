@@ -28,7 +28,6 @@ type TypeInfo = {
     typeName : string
     description : string
     notes : string
-    fileComment : string
 }
 
 /// Indicates whether the field is a scalar or vector;
@@ -68,4 +67,5 @@ type FilePart =
 | TypeEnd of TypeInfo
 | Fields of FieldInfo array
 
-type CodeProducer = TextWriter -> Indent -> FilePart -> Indent
+type FileName = string
+type CodeProducer = FileName -> TextWriter -> Indent -> FilePart -> Indent

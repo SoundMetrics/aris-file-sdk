@@ -31,13 +31,13 @@ let marshalMap =
     ]
     |> Map.ofList
 
-let produce (output : TextWriter) (indent : Indent) (part : FilePart) : Indent =
+let produce filename (output : TextWriter) (indent : Indent) (part : FilePart) : Indent =
 
     let noop = indent // Return unmodified indent for no-ops.
 
     match part with
-    | FileBegin typeInfo ->
-        writePrefixedWrappedLines output indent CommentStart typeInfo.fileComment
+    | FileBegin _ ->
+        writePrefixedWrappedLines output indent CommentStart filename
         output.WriteLine()
 
         indent
