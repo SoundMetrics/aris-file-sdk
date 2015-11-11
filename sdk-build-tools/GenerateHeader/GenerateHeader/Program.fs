@@ -71,7 +71,7 @@ let main argv =
 
             0
         with
-            ex -> Console.WriteLine(sprintf "An error occurred: %s" ex.Message)
+            ex -> Console.Error.WriteLine(sprintf "An error occurred: %s" ex.Message)
                   -1
     else
         Console.Error.WriteLine("Invalid options.")
