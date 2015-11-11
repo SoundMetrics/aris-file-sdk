@@ -1,0 +1,4 @@
+Name,Type,Array,Description,Note,Obsolete
+F1,int,,Description of this field. 12345678901234567890,,
+Field2,string,32,My F2, F2's notes and ramblings go here!!!1!,As of 1/1/2016 use F3 instead.
+F3,string,32,F3!,,

@@ -1,2 +1,2 @@
 ModuleName,TypeName,Description,Notes
-ArisFile,ArisFileHeader,Defines the metadata at the start of an ARIS recording,
+ArisFile,ArisFileHeader,Defines the metadata at the start of an ARIS recording.,
