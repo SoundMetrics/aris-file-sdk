@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FSharpLintSettings xmlns="https://github.com/fsprojects/FSharpLint/blob/master/ConfigurationSchema.xsd">
+  <IgnoreFiles Update="Overwrite"><![CDATA[assemblyinfo.*]]></IgnoreFiles>
+  <Analysers>
+    <NameConventions>
+      <Rules>
+        <IdentifiersMustNotContainUnderscores>
+          <Enabled>False</Enabled>
+        </IdentifiersMustNotContainUnderscores>
+        <RecordFieldNamesMustBePascalCase>
+          <Enabled>False</Enabled>
+        </RecordFieldNamesMustBePascalCase>
+      </Rules>
+    </NameConventions>
+    <SourceLength>
+      <Rules>
+        <MaxLinesInFunction>
+          <Enabled>False</Enabled>
+          <Lines>70</Lines>
+        </MaxLinesInFunction>
+      </Rules>
+    </SourceLength>
+  </Analysers>
+</FSharpLintSettings>

@@ -31,7 +31,7 @@ let marshalMap =
     ]
     |> Map.ofList
 
-let produce filename (output : TextWriter) (indent : Indent) (part : FilePart) : Indent =
+let produce filename (output : TextWriter) (_modifier : string) (indent : Indent) (part : FilePart) : Indent =
 
     let noop = indent // Return unmodified indent for no-ops.
 

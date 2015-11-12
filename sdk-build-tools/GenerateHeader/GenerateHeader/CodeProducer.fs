@@ -68,4 +68,5 @@ type FilePart =
 | Fields of FieldInfo array
 
 type FileName = string
-type CodeProducer = FileName -> TextWriter -> Indent -> FilePart -> Indent
+type Modifier = string
+type CodeProducer = FileName -> TextWriter -> Modifier -> Indent -> FilePart -> Indent

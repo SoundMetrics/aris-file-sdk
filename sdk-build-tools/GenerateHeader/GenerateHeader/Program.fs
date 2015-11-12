@@ -67,10 +67,12 @@ let main argv =
             use output = new StreamWriter(
                             File.Open(options.OutputPath, FileMode.Create, FileAccess.Write, FileShare.None))
 
-            processStream filename producer typeInput fieldInput output
+            processStream filename options.Modifier producer typeInput fieldInput output
+
+            0
         with
-            ex -> Console.WriteLine(sprintf "An error occurred: %s" ex.Message)
+            ex -> Console.Error.WriteLine(sprintf "An error occurred: %s" ex.Message)
+                  -1
     else
         Console.Error.WriteLine("Invalid options.")
-
-    0 // return an integer exit code
+        -2
