@@ -88,26 +88,13 @@ int validate_inputs(int argc,
     return 0;
 }
 
-#define ARIS_FILE_HEADER_SIZE 1024 // TODO generate a constant for size
-#define ARIS_FRAME_HEADER_SIZE 1024 // TODO generate a constant for size
-
-typedef union {
-    char                    raw[ARIS_FILE_HEADER_SIZE]; // Force the correct size
-    struct ArisFileHeader   header; // TODO make typedef in header
-} FileHeaderBuffer;
-
-typedef union {
-    char                    raw[ARIS_FRAME_HEADER_SIZE]; // Force the correct size
-    struct ArisFrameHeader  header;
-} FrameHeaderBuffer;
-
 #define FILE_SIGNATURE 0x05464444 // TODO generate a constant
 #define FRAME_SIGNATURE 0x05464444 // TODO generate a constant
 
 int extract(FILE* fpIn, FILE* fpOut) {
 
-    FileHeaderBuffer fileHeaderBuf;
-    FrameHeaderBuffer frameHeaderBuf;
+    struct ArisFileHeader fileHeader;
+    struct ArisFrameHeader frameHeader;
     long fileSize, dataSize, frameSize, frameCount;
 
     if (fseek(fpIn, 0, SEEK_END)) {
@@ -117,24 +104,24 @@ int extract(FILE* fpIn, FILE* fpOut) {
 
     fileSize = ftell(fpIn);
     fseek(fpIn, 0, SEEK_SET);
-    dataSize = fileSize - ARIS_FILE_HEADER_SIZE;
+    dataSize = fileSize - sizeof(struct ArisFileHeader);
 
-    if (fread(&fileHeaderBuf, sizeof(fileHeaderBuf), 1, fpIn) != 1) {
+    if (fread(&fileHeader, sizeof(fileHeader), 1, fpIn) != 1) {
         fprintf(stderr, "Couldn't read complete file header.\n");
         return NOT_ARIS_FILE;
     }
 
-    if (fileHeaderBuf.header.F1 != FILE_SIGNATURE) {
+    if (fileHeader.F1 != FILE_SIGNATURE) {
         fprintf(stderr, "Invalid file header.\n");
         return NOT_ARIS_FILE;
     }
 
-    if (fread(&frameHeaderBuf, sizeof(frameHeaderBuf), 1, fpIn) != 1) {
+    if (fread(&frameHeader, sizeof(frameHeader), 1, fpIn) != 1) {
         fprintf(stderr, "Couldn't read first frame buffer.\n");
         return CORRUPT_ARIS_FILE;
     }
 
-    frameSize = frameHeaderBuf.header.F1 * frameHeaderBuf.header.F1;
+    frameSize = frameHeader.F1 * frameHeader.F1;
     frameCount = dataSize / frameSize;
 
     fprintf(fpOut, "FrameIndex,FrameTime,Temp,Depth\n");
@@ -146,7 +133,7 @@ int extract(FILE* fpIn, FILE* fpOut) {
         // Skip over the frame data
         fseek(fpIn, frameSize, SEEK_CUR);
 
-    } while (fread(&frameHeaderBuf, sizeof(frameHeaderBuf), 1, fpIn) == 1);
+    } while (fread(&frameHeader, sizeof(frameHeader), 1, fpIn) == 1);
 
     return 0;
 }
