@@ -1,4 +1,42 @@
 Name,Type,Array,Description,Note,Obsolete
-F1,int,,Description of this field. 12345678901234567890,,
-Field2,string,32,My F2, F2's notes and ramblings go here!!!1!,As of 1/1/2016 use F3 instead.
-F3,string,32,F3!,,
+Version,uint,,File format version DDF_05 = 0x05464444,,
+FrameCount,uint,,Total frames in file,,Calculate the number of frames from file size & beams*samples.
+FrameRate,uint,,Initial recorded frame rate,,See frame header instead.
+HighResolution,uint,,"Non-zero if HF, zero if LF",,See frame header instead.
+NumRawBeams,uint,,"ARIS 3000 = 128/64, ARIS 1800 = 96/48, ARIS 1200 = 48",,See frame header instead.
+SampleRate,float,,1/Sample Period,,See frame header instead.
+SamplesPerChannel,uint,,Number of range samples in each beam,,See frame header instead.
+ReceiverGain,uint,,Relative gain in dB:  0 - 40,,See frame header instead.
+WindowStart,float,,Image window start range in meters (code [0..31] in DIDSON),,See frame header instead.
+WindowLength,float,,Image window length in meters  (code [0..3] in DIDSON),,See frame header instead.
+Reverse,uint,,"Non-zero = lens down (DIDSON) or lens up (ARIS), zero = opposite",,See frame header instead.
+SN,uint,,Sonar serial number,,
+strDate,string,32,Date that file was recorded,,
+strHeaderID,string,256,User input to identify file in 256 characters,,
+UserID1,int,,User-defined integer quantity,,
+UserID2,int,,User-defined integer quantity,,
+UserID3,int,,User-defined integer quantity,,
+UserID4,int,,User-defined integer quantity,,
+StartFrame,uint,,First frame number from source file (for DIDSON snippet files),,
+EndFrame,uint,,Last frame number from source file (for DIDSON snippet files),,
+TimeLapse,uint,,Non-zero indicates time lapse recording,,
+RecordInterval,uint,,Number of frames/seconds between recorded frames,,
+RadioSeconds,uint,,Frames or seconds interval,,
+FrameInterval,uint,,Record every Nth frame,,
+Flags,uint,,See DDF_04 file format document,,Obsolete.
+AuxFlags,uint,,See DDF_04 file format document,,
+Sspd,uint,,Sound velocity in water,,See frame header instead.
+Flags3D,uint,,See DDF_04 file format document,,
+SoftwareVersion,uint,,DIDSON software version that recorded the file,,
+WaterTemp,uint,,"Water temperature code:  0 = 5-15C, 1 = 15-25C, 2 = 25-35C",,
+Salinity,uint,,"Salinity code:  0 = fresh, 1 = brackish, 2 = salt",,
+PulseLength,uint,,Added for ARIS but not used,,
+TxMode,uint,,Added for ARIS but not used,,
+VersionFGPA,uint,,Reserved for future use,,
+VersionPSuC,uint,,Reserved for future use,,
+ThumbnailFI,uint,,Frame index of frame used for thumbnail image of file,,
+FileSize,uint64,,Total file size in bytes,,Do not use; query your filesystem instead.
+OptionalHeaderSize,uint64,,Reserved for future use,,Obsolete; not used.
+OptionalTailSize,uint64,,Reserved for future use,,Obsolete; not used.
+VersionMinor,uint,,DIDSON_ADJUSTED_VERSION_MINOR,,Obsolete.
+LargeLens,uint,,"Non-zero if telephoto lens (large lens, hi-res lens, big lens) is present",,See frame header instead.

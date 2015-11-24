@@ -64,7 +64,7 @@
   <ItemGroup>
     <Compile Include="CodeProducer.fs" />
     <Compile Include="FormattingHelp.fs" />
-    <Compile Include="FSharpProducer.fs" />
+    <Compile Include="CSharpProducer.fs" />
     <Compile Include="CProducer.fs" />
     <Compile Include="FieldParser.fs" />
     <Compile Include="AssemblyInfo.fs" />

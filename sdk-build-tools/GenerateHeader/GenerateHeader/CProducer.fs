@@ -63,6 +63,10 @@ let produce filename (output : TextWriter) (modifier : string) (indent : Indent)
 
     | TypeBegin typeInfo ->
         if includeAll then
+            writeUnbrokenLine output indent "#define ARIS_FILE_SIGNATURE  0x05464444"
+            writeUnbrokenLine output indent "#define ARIS_FRAME_SIGNATURE 0x05464444"
+            output.WriteLine()
+
             writeUnbrokenLine output indent "#pragma pack(push, 1)"
             output.WriteLine()
 
@@ -81,10 +85,11 @@ let produce filename (output : TextWriter) (modifier : string) (indent : Indent)
         indent
 
     | Fields fieldInfos ->
+        let mutable storageSize = 0
         let originalIndent = indent
         let indent = indent.Indent()
 
-        for field in fieldInfos do
+        let generateField field =
             if field.description.Length > 0 then
                 writePrefixedWrappedLines output indent CommentStart field.description
 
@@ -103,5 +108,17 @@ let produce filename (output : TextWriter) (modifier : string) (indent : Indent)
                 (sprintf "%s %s%s;" (typeMap.[field.typ]) field.name vector)
 
             output.WriteLine()
+
+        for field in fieldInfos do
+            storageSize <- storageSize + field.StorageSize
+            generateField field
+
+        let paddingSize = 1024 - storageSize
+        generateField { name = "padding"
+                        typ = String
+                        fieldCat = Vector paddingSize
+                        description = "Padding to fill out to 1024 bytes"
+                        note = ""
+                        obsoleteNote = "" }
 
         originalIndent
