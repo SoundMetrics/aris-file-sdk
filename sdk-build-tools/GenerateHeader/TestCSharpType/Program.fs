@@ -5,12 +5,19 @@ open System.Runtime.InteropServices
 
 let printTypeSize typeName =
 
-    let typ = Type.GetType(typeName)
+    let typ =
+        match typeName with
+        | "Aris.FileTypes.ArisFileHeader" -> typedefof<Aris.FileTypes.ArisFileHeader>
+        | "Aris.FileTypes.ArisFrameHeader" -> typedefof<Aris.FileTypes.ArisFrameHeader>
+        | _ -> failwith (sprintf "Unexpected type: '%s'" typeName)
     let size = Marshal.SizeOf(typ)
     printfn "%s is %d bytes" typ.FullName size
 
 [<EntryPoint>]
 let main argv =
+
+    // Ensure the assembly is loaded.
+    typedefof<Aris.FileTypes.ArisFileHeader>.FullName |> ignore
 
     try
         match argv with
