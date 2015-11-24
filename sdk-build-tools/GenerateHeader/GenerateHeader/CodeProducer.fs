@@ -46,6 +46,16 @@ type FieldType =
 | Float64
 | String
 
+let elementSize = function
+    | Uint16  -> 2
+    | Uint32  -> 4
+    | UInt64  -> 8
+    | Int32   -> 4
+    | Float32 -> 4
+    | Float64 -> 8
+    | String  -> 1
+
+
 /// Describes a field.
 type FieldInfo = {
     name : string
@@ -55,6 +65,12 @@ type FieldInfo = {
     note : string
     obsoleteNote : string
 }
+with
+    member fi.StorageSize =
+        let multiplier = match fi.fieldCat with
+                         | Scalar -> 1
+                         | Vector size -> size
+        multiplier * elementSize fi.typ
 
 type FilePart =
 | FileBegin of TypeInfo

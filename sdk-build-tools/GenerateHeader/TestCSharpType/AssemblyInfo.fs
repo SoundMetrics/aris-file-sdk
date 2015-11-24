@@ -1,4 +1,4 @@
-﻿namespace TestFSharpType.AssemblyInfo
+﻿namespace TestCSharpType.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices
@@ -7,11 +7,11 @@ open System.Runtime.InteropServices
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[<assembly: AssemblyTitle("TestFSharpType")>]
+[<assembly: AssemblyTitle("TestCSharpType")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("")>]
-[<assembly: AssemblyProduct("TestFSharpType")>]
+[<assembly: AssemblyProduct("TestCSharpType")>]
 [<assembly: AssemblyCopyright("Copyright ©  2015")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
@@ -22,7 +22,7 @@ open System.Runtime.InteropServices
 [<assembly: ComVisible(false)>]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[<assembly: Guid("13b67436-895a-460d-a702-447cf40949c3")>]
+[<assembly: Guid("f5269ea1-9499-4da9-b70c-905f264cd7c1")>]
 
 // Version information for an assembly consists of the following four values:
 // 
