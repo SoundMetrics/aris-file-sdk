@@ -3,6 +3,8 @@
 #include "stdio.h"
 #include "FileHeader.h"
 #include "FrameHeader.h"
+#include "FrameFuncs.h"
+#include <math.h>
 #include <string.h>
 
 #define INVALID_INPUTS      -1
@@ -31,7 +33,7 @@ int main(int argc, char** argv ) {
         return INVALID_INPUTS;
     }
 
-    fpIn = fopen(inputPath, "r");
+    fpIn = fopen(inputPath, "rb");
     if (!fpIn) {
         fprintf(stderr, "Couldn't open the input file.\n");
         return CANT_OPEN_INPUT;
@@ -88,14 +90,11 @@ int validate_inputs(int argc,
     return 0;
 }
 
-#define FILE_SIGNATURE 0x05464444 // TODO generate a constant
-#define FRAME_SIGNATURE 0x05464444 // TODO generate a constant
-
 int extract(FILE* fpIn, FILE* fpOut) {
 
     struct ArisFileHeader fileHeader;
     struct ArisFrameHeader frameHeader;
-    long fileSize, dataSize, frameSize, frameCount;
+    long fileSize = 0, dataSize = 0, frameSize = 0, frameCount = 0;
 
     if (fseek(fpIn, 0, SEEK_END)) {
         fprintf(stderr, "Couldn't determine file size.\n");
@@ -111,7 +110,7 @@ int extract(FILE* fpIn, FILE* fpOut) {
         return NOT_ARIS_FILE;
     }
 
-    if (fileHeader.F1 != FILE_SIGNATURE) {
+    if (fileHeader.Version != ARIS_FILE_SIGNATURE) {
         fprintf(stderr, "Invalid file header.\n");
         return NOT_ARIS_FILE;
     }
@@ -121,14 +120,29 @@ int extract(FILE* fpIn, FILE* fpOut) {
         return CORRUPT_ARIS_FILE;
     }
 
-    frameSize = frameHeader.F1 * frameHeader.F1;
+    // ARIS recordings have a consistent frame size all the way through the file.
+    frameSize = frameHeader.SamplesPerBeam * get_beams_from_pingmode(frameHeader.PingMode);
     frameCount = dataSize / frameSize;
 
-    fprintf(fpOut, "FrameIndex,FrameTime,Temp,Depth\n");
+    fprintf(fpOut, "FrameIndex,FrameTime,WaterTemp\n");
 
+    // Print frame data for each frame.
     do {
-        // Dump frame info
-        // TODO
+
+        // Note: frames indices start at zero, but always present to the
+        // user as starting at 1.
+        fprintf(fpOut, "%u", frameHeader.FrameIndex + 1);
+
+        fprintf(fpOut, ",%llu", frameHeader.FrameTime);
+
+        if (isnan(frameHeader.WaterTemp)) {
+            fprintf(fpOut, ",");
+        }
+        else {
+            fprintf(fpOut, ",%f", (double)frameHeader.WaterTemp);
+        }
+
+        fprintf(fpOut, "\n");
 
         // Skip over the frame data
         fseek(fpIn, frameSize, SEEK_CUR);
