@@ -84,6 +84,11 @@ let produce filename (output : TextWriter) (_modifier : string) (indent : Indent
 
         writeUnbrokenLine output indent (sprintf "public struct %s" typeInfo.typeName)
         writeUnbrokenLine output indent "{"
+
+        writeUnbrokenLine output (indent.Indent()) "public static int ArisFileSignature =  0x05464444;"
+        writeUnbrokenLine output (indent.Indent()) "public static int ArisFrameSignature = 0x05464444;"
+        output.WriteLine()
+
         indent
 
     | TypeEnd _ ->

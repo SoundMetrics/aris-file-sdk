@@ -63,6 +63,10 @@ let produce filename (output : TextWriter) (modifier : string) (indent : Indent)
 
     | TypeBegin typeInfo ->
         if includeAll then
+            writeUnbrokenLine output indent "#define ARIS_FILE_SIGNATURE  0x05464444"
+            writeUnbrokenLine output indent "#define ARIS_FRAME_SIGNATURE 0x05464444"
+            output.WriteLine()
+
             writeUnbrokenLine output indent "#pragma pack(push, 1)"
             output.WriteLine()
 

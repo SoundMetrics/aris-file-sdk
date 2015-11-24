@@ -5,6 +5,9 @@
 
 #include <stdint.h>
 
+#define ARIS_FILE_SIGNATURE  0x05464444
+#define ARIS_FRAME_SIGNATURE 0x05464444
+
 #pragma pack(push, 1)
 
 struct ArisFileHeader {
