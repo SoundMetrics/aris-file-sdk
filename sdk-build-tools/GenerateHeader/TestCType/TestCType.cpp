@@ -39,7 +39,7 @@ int main(int argc, char** argv)
     else {
         auto typeName = argv[1];
 
-        struct type_info {
+        struct {
             const char* name;
             size_t size;
         } types[] = {
@@ -50,7 +50,7 @@ int main(int argc, char** argv)
         };
 
         const auto it = std::find_if(std::begin(types), std::end(types),
-            [typeName](const type_info& ti) { return strcmp(typeName, ti.name) == 0; });
+            [typeName](const auto& ti) { return strcmp(typeName, ti.name) == 0; });
 
         if (it != std::end(types)) {
             printf("%s is %d bytes\n", typeName, it->size);
