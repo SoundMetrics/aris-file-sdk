@@ -283,7 +283,7 @@ namespace Aris.FileTypes
         // Note: microseconds
         public float FrameRate;
 
-        // Sound velocity in water calculated from water temperature and salinity setting
+        // Sound velocity in water calculated from water temperature depth and salinity setting
         // Note: m/s
         public float SoundSpeed;
 
@@ -327,7 +327,8 @@ namespace Aris.FileTypes
         // Water salinity code:  0 = fresh, 15 = brackish, 35 = salt
         public UInt32 Salinity;
 
-        // Depth sensor output in meters
+        // Depth sensor output
+        // Note: psi
         public float Pressure;
 
         // Battery input voltage before power steering
@@ -402,22 +403,31 @@ namespace Aris.FileTypes
         public float RollAbsPosition;
 
         // Accelerometer outputs from AR2 CPU board sensor
+        // Note: G
         public float PanAccelX;
 
+        // Note: G
         public float PanAccelY;
 
+        // Note: G
         public float PanAccelZ;
 
+        // Note: G
         public float TiltAccelX;
 
+        // Note: G
         public float TiltAccelY;
 
+        // Note: G
         public float TiltAccelZ;
 
+        // Note: G
         public float RollAccelX;
 
+        // Note: G
         public float RollAccelY;
 
+        // Note: G
         public float RollAccelZ;
 
         // Cookie indices for command acknowlege in frame header
@@ -435,7 +445,8 @@ namespace Aris.FileTypes
         // packet delay factor in us (does not include function overhead time)
         public UInt32 InterpacketDelayPeriod;
 
-        // Total number of seconds sonar has been running; session or lifetime?
+        // Total time the sonar has been running over its lifetime.
+        // Note: seconds
         public UInt32 Uptime;
 
         // Major version number

@@ -282,7 +282,7 @@ struct ArisFrameHeader {
     // Note: microseconds
     float FrameRate;
 
-    // Sound velocity in water calculated from water temperature and salinity setting
+    // Sound velocity in water calculated from water temperature depth and salinity setting
     // Note: m/s
     float SoundSpeed;
 
@@ -326,7 +326,8 @@ struct ArisFrameHeader {
     // Water salinity code:  0 = fresh, 15 = brackish, 35 = salt
     uint32_t Salinity;
 
-    // Depth sensor output in meters
+    // Depth sensor output
+    // Note: psi
     float Pressure;
 
     // Battery input voltage before power steering
@@ -401,22 +402,31 @@ struct ArisFrameHeader {
     float RollAbsPosition;
 
     // Accelerometer outputs from AR2 CPU board sensor
+    // Note: G
     float PanAccelX;
 
+    // Note: G
     float PanAccelY;
 
+    // Note: G
     float PanAccelZ;
 
+    // Note: G
     float TiltAccelX;
 
+    // Note: G
     float TiltAccelY;
 
+    // Note: G
     float TiltAccelZ;
 
+    // Note: G
     float RollAccelX;
 
+    // Note: G
     float RollAccelY;
 
+    // Note: G
     float RollAccelZ;
 
     // Cookie indices for command acknowlege in frame header
@@ -434,7 +444,8 @@ struct ArisFrameHeader {
     // packet delay factor in us (does not include function overhead time)
     uint32_t InterpacketDelayPeriod;
 
-    // Total number of seconds sonar has been running; session or lifetime?
+    // Total time the sonar has been running over its lifetime.
+    // Note: seconds
     uint32_t Uptime;
 
     // Major version number
