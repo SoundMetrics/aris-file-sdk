@@ -62,6 +62,7 @@ let processStream filename modifier (produce : CodeProducer) (typeInput : Stream
         TypeBegin typeInfo
         Fields fields
         TypeEnd typeInfo
+        FieldOffsets (typeInfo, fields)
         ModuleEnd typeInfo
         NamespaceEnd typeInfo
         FileEnd typeInfo

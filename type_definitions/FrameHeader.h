@@ -10,6 +10,7 @@
 
 #pragma pack(push, 1)
 
+// Defines the metadata at the start of an ARIS frame.
 struct ArisFrameHeader {
 
     // Frame number in file
@@ -467,5 +468,336 @@ struct ArisFrameHeader {
 };
 
 #pragma pack(pop)
+
+// In general the struct above should be used rather than the offsets.
+// The 'ArisFrameHeader' prefix prevents name conflicts between the file and frame headers
+enum ArisFrameHeaderOffsets {
+    ArisFrameHeaderOffset_FrameIndex         =    0,
+
+    ArisFrameHeaderOffset_FrameTime          =    4,
+
+    ArisFrameHeaderOffset_Version            =   12,
+
+    ArisFrameHeaderOffset_Status             =   16,
+
+    ArisFrameHeaderOffset_sonarTimeStamp     =   20,
+
+    ArisFrameHeaderOffset_TS_Day             =   28,
+
+    ArisFrameHeaderOffset_TS_Hour            =   32,
+
+    ArisFrameHeaderOffset_TS_Minute          =   36,
+
+    ArisFrameHeaderOffset_TS_Second          =   40,
+
+    ArisFrameHeaderOffset_TS_Hsecond         =   44,
+
+    ArisFrameHeaderOffset_TransmitMode       =   48,
+
+    ArisFrameHeaderOffset_WindowStart        =   52,
+
+    ArisFrameHeaderOffset_WindowLength       =   56,
+
+    ArisFrameHeaderOffset_Threshold          =   60,
+
+    ArisFrameHeaderOffset_Intensity          =   64,
+
+    ArisFrameHeaderOffset_ReceiverGain       =   68,
+
+    ArisFrameHeaderOffset_DegC1              =   72,
+
+    ArisFrameHeaderOffset_DegC2              =   76,
+
+    ArisFrameHeaderOffset_Humidity           =   80,
+
+    ArisFrameHeaderOffset_Focus              =   84,
+
+    ArisFrameHeaderOffset_Battery            =   88,
+
+    ArisFrameHeaderOffset_UserValue1         =   92,
+
+    ArisFrameHeaderOffset_UserValue2         =   96,
+
+    ArisFrameHeaderOffset_UserValue3         =  100,
+
+    ArisFrameHeaderOffset_UserValue4         =  104,
+
+    ArisFrameHeaderOffset_UserValue5         =  108,
+
+    ArisFrameHeaderOffset_UserValue6         =  112,
+
+    ArisFrameHeaderOffset_UserValue7         =  116,
+
+    ArisFrameHeaderOffset_UserValue8         =  120,
+
+    ArisFrameHeaderOffset_Velocity           =  124,
+
+    ArisFrameHeaderOffset_Depth              =  128,
+
+    ArisFrameHeaderOffset_Altitude           =  132,
+
+    ArisFrameHeaderOffset_Pitch              =  136,
+
+    ArisFrameHeaderOffset_PitchRate          =  140,
+
+    ArisFrameHeaderOffset_Roll               =  144,
+
+    ArisFrameHeaderOffset_RollRate           =  148,
+
+    ArisFrameHeaderOffset_Heading            =  152,
+
+    ArisFrameHeaderOffset_HeadingRate        =  156,
+
+    ArisFrameHeaderOffset_CompassHeading     =  160,
+
+    ArisFrameHeaderOffset_CompassPitch       =  164,
+
+    ArisFrameHeaderOffset_CompassRoll        =  168,
+
+    ArisFrameHeaderOffset_Latitude           =  172,
+
+    ArisFrameHeaderOffset_Longitude          =  180,
+
+    ArisFrameHeaderOffset_SonarPosition      =  188,
+
+    ArisFrameHeaderOffset_ConfigFlags        =  192,
+
+    ArisFrameHeaderOffset_BeamTilt           =  196,
+
+    ArisFrameHeaderOffset_TargetRange        =  200,
+
+    ArisFrameHeaderOffset_TargetBearing      =  204,
+
+    ArisFrameHeaderOffset_TargetPresent      =  208,
+
+    ArisFrameHeaderOffset_FirmwareRevision   =  212,
+
+    ArisFrameHeaderOffset_Flags              =  216,
+
+    ArisFrameHeaderOffset_SourceFrame        =  220,
+
+    ArisFrameHeaderOffset_WaterTemp          =  224,
+
+    ArisFrameHeaderOffset_TimerPeriod        =  228,
+
+    ArisFrameHeaderOffset_SonarX             =  232,
+
+    ArisFrameHeaderOffset_SonarY             =  236,
+
+    ArisFrameHeaderOffset_SonarZ             =  240,
+
+    ArisFrameHeaderOffset_SonarPan           =  244,
+
+    ArisFrameHeaderOffset_SonarTilt          =  248,
+
+    ArisFrameHeaderOffset_SonarRoll          =  252,
+
+    ArisFrameHeaderOffset_PanPNNL            =  256,
+
+    ArisFrameHeaderOffset_TiltPNNL           =  260,
+
+    ArisFrameHeaderOffset_RollPNNL           =  264,
+
+    ArisFrameHeaderOffset_VehicleTime        =  268,
+
+    ArisFrameHeaderOffset_TimeGGK            =  276,
+
+    ArisFrameHeaderOffset_DateGGK            =  280,
+
+    ArisFrameHeaderOffset_QualityGGK         =  284,
+
+    ArisFrameHeaderOffset_NumSatsGGK         =  288,
+
+    ArisFrameHeaderOffset_DOPGGK             =  292,
+
+    ArisFrameHeaderOffset_EHTGGK             =  296,
+
+    ArisFrameHeaderOffset_HeaveTSS           =  300,
+
+    ArisFrameHeaderOffset_YearGPS            =  304,
+
+    ArisFrameHeaderOffset_MonthGPS           =  308,
+
+    ArisFrameHeaderOffset_DayGPS             =  312,
+
+    ArisFrameHeaderOffset_HourGPS            =  316,
+
+    ArisFrameHeaderOffset_MinuteGPS          =  320,
+
+    ArisFrameHeaderOffset_SecondGPS          =  324,
+
+    ArisFrameHeaderOffset_HSecondGPS         =  328,
+
+    ArisFrameHeaderOffset_SonarPanOffset     =  332,
+
+    ArisFrameHeaderOffset_SonarTiltOffset    =  336,
+
+    ArisFrameHeaderOffset_SonarRollOffset    =  340,
+
+    ArisFrameHeaderOffset_SonarXOffset       =  344,
+
+    ArisFrameHeaderOffset_SonarYOffset       =  348,
+
+    ArisFrameHeaderOffset_SonarZOffset       =  352,
+
+    ArisFrameHeaderOffset_Tmatrix            =  356,
+
+    ArisFrameHeaderOffset_SampleRate         =  420,
+
+    ArisFrameHeaderOffset_AccellX            =  424,
+
+    ArisFrameHeaderOffset_AccellY            =  428,
+
+    ArisFrameHeaderOffset_AccellZ            =  432,
+
+    ArisFrameHeaderOffset_PingMode           =  436,
+
+    ArisFrameHeaderOffset_FrequencyHiLow     =  440,
+
+    ArisFrameHeaderOffset_PulseWidth         =  444,
+
+    ArisFrameHeaderOffset_CyclePeriod        =  448,
+
+    ArisFrameHeaderOffset_SamplePeriod       =  452,
+
+    ArisFrameHeaderOffset_TransmitEnable     =  456,
+
+    ArisFrameHeaderOffset_FrameRate          =  460,
+
+    ArisFrameHeaderOffset_SoundSpeed         =  464,
+
+    ArisFrameHeaderOffset_SamplesPerBeam     =  468,
+
+    ArisFrameHeaderOffset_Enable150V         =  472,
+
+    ArisFrameHeaderOffset_SampleStartDelay   =  476,
+
+    ArisFrameHeaderOffset_LargeLens          =  480,
+
+    ArisFrameHeaderOffset_TheSystemType      =  484,
+
+    ArisFrameHeaderOffset_SonarSerialNumber  =  488,
+
+    // OBSOLETE: Obsolete
+    ArisFrameHeaderOffset_ReservedEK         =  492,
+
+    ArisFrameHeaderOffset_ArisErrorFlagsUint =  500,
+
+    ArisFrameHeaderOffset_MissedPackets      =  504,
+
+    ArisFrameHeaderOffset_ArisAppVersion     =  508,
+
+    ArisFrameHeaderOffset_Available2         =  512,
+
+    ArisFrameHeaderOffset_ReorderedSamples   =  516,
+
+    ArisFrameHeaderOffset_Salinity           =  520,
+
+    ArisFrameHeaderOffset_Pressure           =  524,
+
+    ArisFrameHeaderOffset_BatteryVoltage     =  528,
+
+    ArisFrameHeaderOffset_MainVoltage        =  532,
+
+    ArisFrameHeaderOffset_SwitchVoltage      =  536,
+
+    ArisFrameHeaderOffset_FocusMotorMoving   =  540,
+
+    ArisFrameHeaderOffset_VoltageChanging    =  544,
+
+    ArisFrameHeaderOffset_FocusTimeoutFault  =  548,
+
+    ArisFrameHeaderOffset_FocusOverCurrentFault =  552,
+
+    ArisFrameHeaderOffset_FocusNotFoundFault =  556,
+
+    ArisFrameHeaderOffset_FocusStalledFault  =  560,
+
+    ArisFrameHeaderOffset_FPGATimeoutFault   =  564,
+
+    ArisFrameHeaderOffset_FPGABusyFault      =  568,
+
+    ArisFrameHeaderOffset_FPGAStuckFault     =  572,
+
+    ArisFrameHeaderOffset_CPUTempFault       =  576,
+
+    ArisFrameHeaderOffset_PSUTempFault       =  580,
+
+    ArisFrameHeaderOffset_WaterTempFault     =  584,
+
+    ArisFrameHeaderOffset_HumidityFault      =  588,
+
+    ArisFrameHeaderOffset_PressureFault      =  592,
+
+    ArisFrameHeaderOffset_VoltageReadFault   =  596,
+
+    ArisFrameHeaderOffset_VoltageWriteFault  =  600,
+
+    ArisFrameHeaderOffset_FocusCurrentPosition =  604,
+
+    ArisFrameHeaderOffset_TargetPan          =  608,
+
+    ArisFrameHeaderOffset_TargetTilt         =  612,
+
+    ArisFrameHeaderOffset_TargetRoll         =  616,
+
+    ArisFrameHeaderOffset_PanMotorErrorCode  =  620,
+
+    ArisFrameHeaderOffset_TiltMotorErrorCode =  624,
+
+    ArisFrameHeaderOffset_RollMotorErrorCode =  628,
+
+    ArisFrameHeaderOffset_PanAbsPosition     =  632,
+
+    ArisFrameHeaderOffset_TiltAbsPosition    =  636,
+
+    ArisFrameHeaderOffset_RollAbsPosition    =  640,
+
+    ArisFrameHeaderOffset_PanAccelX          =  644,
+
+    ArisFrameHeaderOffset_PanAccelY          =  648,
+
+    ArisFrameHeaderOffset_PanAccelZ          =  652,
+
+    ArisFrameHeaderOffset_TiltAccelX         =  656,
+
+    ArisFrameHeaderOffset_TiltAccelY         =  660,
+
+    ArisFrameHeaderOffset_TiltAccelZ         =  664,
+
+    ArisFrameHeaderOffset_RollAccelX         =  668,
+
+    ArisFrameHeaderOffset_RollAccelY         =  672,
+
+    ArisFrameHeaderOffset_RollAccelZ         =  676,
+
+    ArisFrameHeaderOffset_AppliedSettings    =  680,
+
+    ArisFrameHeaderOffset_ConstrainedSettings =  684,
+
+    ArisFrameHeaderOffset_InvalidSettings    =  688,
+
+    ArisFrameHeaderOffset_EnableInterpacketDelay =  692,
+
+    ArisFrameHeaderOffset_InterpacketDelayPeriod =  696,
+
+    ArisFrameHeaderOffset_Uptime             =  700,
+
+    ArisFrameHeaderOffset_ArisAppVersionMajor =  704,
+
+    ArisFrameHeaderOffset_ArisAppVersionMinor =  706,
+
+    ArisFrameHeaderOffset_GoTime             =  708,
+
+    ArisFrameHeaderOffset_PanVelocity        =  716,
+
+    ArisFrameHeaderOffset_TiltVelocity       =  720,
+
+    ArisFrameHeaderOffset_RollVelocity       =  724,
+
+    ArisFrameHeaderOffset_GpsTimeAge         =  728,
+
+};
+
 
 #endif // !ARIS_ARISFRAMEHEADER_H

@@ -10,6 +10,7 @@
 
 #pragma pack(push, 1)
 
+// Defines the metadata at the start of an ARIS recording.
 struct ArisFileHeader {
 
     // File format version DDF_05 = 0x05464444
@@ -158,5 +159,110 @@ struct ArisFileHeader {
 };
 
 #pragma pack(pop)
+
+// In general the struct above should be used rather than the offsets.
+// The 'ArisFileHeader' prefix prevents name conflicts between the file and frame headers
+enum ArisFileHeaderOffsets {
+    ArisFileHeaderOffset_Version             =    0,
+
+    // OBSOLETE: Calculate the number of frames from file size & beams*samples.
+    ArisFileHeaderOffset_FrameCount          =    4,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_FrameRate           =    8,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_HighResolution      =   12,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_NumRawBeams         =   16,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_SampleRate          =   20,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_SamplesPerChannel   =   24,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_ReceiverGain        =   28,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_WindowStart         =   32,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_WindowLength        =   36,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_Reverse             =   40,
+
+    ArisFileHeaderOffset_SN                  =   44,
+
+    ArisFileHeaderOffset_strDate             =   48,
+
+    ArisFileHeaderOffset_strHeaderID         =   80,
+
+    ArisFileHeaderOffset_UserID1             =  336,
+
+    ArisFileHeaderOffset_UserID2             =  340,
+
+    ArisFileHeaderOffset_UserID3             =  344,
+
+    ArisFileHeaderOffset_UserID4             =  348,
+
+    ArisFileHeaderOffset_StartFrame          =  352,
+
+    ArisFileHeaderOffset_EndFrame            =  356,
+
+    ArisFileHeaderOffset_TimeLapse           =  360,
+
+    ArisFileHeaderOffset_RecordInterval      =  364,
+
+    ArisFileHeaderOffset_RadioSeconds        =  368,
+
+    ArisFileHeaderOffset_FrameInterval       =  372,
+
+    // OBSOLETE: Obsolete.
+    ArisFileHeaderOffset_Flags               =  376,
+
+    ArisFileHeaderOffset_AuxFlags            =  380,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_Sspd                =  384,
+
+    ArisFileHeaderOffset_Flags3D             =  388,
+
+    ArisFileHeaderOffset_SoftwareVersion     =  392,
+
+    ArisFileHeaderOffset_WaterTemp           =  396,
+
+    ArisFileHeaderOffset_Salinity            =  400,
+
+    ArisFileHeaderOffset_PulseLength         =  404,
+
+    ArisFileHeaderOffset_TxMode              =  408,
+
+    ArisFileHeaderOffset_VersionFGPA         =  412,
+
+    ArisFileHeaderOffset_VersionPSuC         =  416,
+
+    ArisFileHeaderOffset_ThumbnailFI         =  420,
+
+    // OBSOLETE: Do not use; query your filesystem instead.
+    ArisFileHeaderOffset_FileSize            =  424,
+
+    // OBSOLETE: Obsolete; not used.
+    ArisFileHeaderOffset_OptionalHeaderSize  =  432,
+
+    // OBSOLETE: Obsolete; not used.
+    ArisFileHeaderOffset_OptionalTailSize    =  440,
+
+    // OBSOLETE: Obsolete.
+    ArisFileHeaderOffset_VersionMinor        =  448,
+
+    // OBSOLETE: See frame header instead.
+    ArisFileHeaderOffset_LargeLens           =  452,
+
+};
+
 
 #endif // !ARIS_ARISFILEHEADER_H

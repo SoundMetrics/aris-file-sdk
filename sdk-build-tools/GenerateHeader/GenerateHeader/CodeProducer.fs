@@ -66,6 +66,7 @@ type FieldInfo = {
     obsoleteNote : string
 }
 with
+    member fi.IsObsolete = fi.obsoleteNote.Length > 0
     member fi.StorageSize =
         let multiplier = match fi.fieldCat with
                          | Scalar -> 1
@@ -82,6 +83,7 @@ type FilePart =
 | TypeBegin of TypeInfo
 | TypeEnd of TypeInfo
 | Fields of FieldInfo array
+| FieldOffsets of TypeInfo * FieldInfo array
 
 type FileName = string
 type Modifier = string

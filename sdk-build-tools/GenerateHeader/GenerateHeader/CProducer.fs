@@ -70,6 +70,11 @@ let produce filename (output : TextWriter) (modifier : string) (indent : Indent)
             writeUnbrokenLine output indent "#pragma pack(push, 1)"
             output.WriteLine()
 
+            if typeInfo.description.Length > 0 then
+                writePrefixedWrappedLines output indent CommentStart typeInfo.description
+            if typeInfo.notes.Length > 0 then
+                writePrefixedWrappedLines output indent CommentStart typeInfo.description
+
             writeUnbrokenLine output indent (sprintf "struct %s {" typeInfo.typeName)
             output.WriteLine()
 
@@ -122,3 +127,36 @@ let produce filename (output : TextWriter) (modifier : string) (indent : Indent)
                         obsoleteNote = "" }
 
         originalIndent
+
+    | FieldOffsets (typeInfo, fieldInfos) ->
+        if includeAll then
+            let mutable offset = 0
+            let originalIndent = indent
+            let indent = indent.Indent()
+
+            let generateField (field : FieldInfo) =
+                if field.IsObsolete then
+                    writeUnbrokenLine output indent (sprintf "// OBSOLETE: %s" field.obsoleteNote)
+
+                writeUnbrokenLine output indent
+                    (sprintf "%-40s = %4d," (typeInfo.typeName + "Offset_" + field.name) offset)
+
+                output.WriteLine()
+
+            output.WriteLine()
+            writeUnbrokenLine output originalIndent "// In general the struct above should be used rather than the offsets."
+            writeUnbrokenLine output originalIndent
+                (sprintf "// The '%s' prefix prevents name conflicts between the file and frame headers"
+                         typeInfo.typeName)
+            writeUnbrokenLine output originalIndent (sprintf "enum %sOffsets {" typeInfo.typeName)
+
+            for field in fieldInfos do
+                generateField field
+                offset <- offset + field.StorageSize
+
+            writeUnbrokenLine output originalIndent "};"
+            output.WriteLine()
+
+            originalIndent
+        else
+            noop
