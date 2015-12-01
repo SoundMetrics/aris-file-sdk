@@ -73,7 +73,7 @@ let produce filename (output : TextWriter) (modifier : string) (indent : Indent)
             if typeInfo.description.Length > 0 then
                 writePrefixedWrappedLines output indent CommentStart typeInfo.description
             if typeInfo.notes.Length > 0 then
-                writePrefixedWrappedLines output indent CommentStart typeInfo.description
+                writePrefixedWrappedLines output indent CommentStart typeInfo.notes
 
             writeUnbrokenLine output indent (sprintf "struct %s {" typeInfo.typeName)
             output.WriteLine()
