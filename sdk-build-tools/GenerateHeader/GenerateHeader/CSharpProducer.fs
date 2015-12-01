@@ -79,6 +79,11 @@ let produce filename (output : TextWriter) (_modifier : string) (indent : Indent
     | ModuleEnd _ -> noop
 
     | TypeBegin typeInfo ->
+        if typeInfo.description.Length > 0 then
+            writePrefixedWrappedLines output indent CommentStart typeInfo.description
+        if typeInfo.notes.Length > 0 then
+            writePrefixedWrappedLines output indent CommentStart typeInfo.notes
+
         writeUnbrokenLine output indent
             "[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]"
 
@@ -137,5 +142,32 @@ let produce filename (output : TextWriter) (_modifier : string) (indent : Indent
                         description = "Padding to fill out to 1024 bytes"
                         note = ""
                         obsoleteNote = "" }
+
+        originalIndent
+
+    | FieldOffsets (typeInfo, fieldInfos) ->
+        let originalIndent = indent
+        let indent = indent.Indent()
+        let mutable offset = 0
+
+        let generateField (field : FieldInfo) =
+            if field.IsObsolete then
+                writeUnbrokenLine output indent (sprintf "[Obsolete(\"%s\")]" field.obsoleteNote)
+
+            writeUnbrokenLine output indent
+                (sprintf "public static UInt32 %-30s = %4d;" field.name offset)
+
+            output.WriteLine()
+
+        output.WriteLine()
+        writeUnbrokenLine output originalIndent (sprintf "public static class %sOffsets" typeInfo.typeName)
+        writeUnbrokenLine output originalIndent "{"
+
+        for field in fieldInfos do
+            generateField field
+            offset <- offset + field.StorageSize
+
+        writeUnbrokenLine output originalIndent "}"
+        output.WriteLine()
 
         originalIndent

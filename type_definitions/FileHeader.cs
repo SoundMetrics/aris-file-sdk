@@ -6,6 +6,7 @@ namespace Aris.FileTypes
     using System;
     using System.Runtime.InteropServices;
 
+    // Defines the metadata at the start of an ARIS recording.
     [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
     public struct ArisFileHeader
     {
@@ -159,4 +160,108 @@ namespace Aris.FileTypes
         public string padding;
 
     }
+
+    public static class ArisFileHeaderOffsets
+    {
+        public static UInt32 Version                        =    0;
+
+        [Obsolete("Calculate the number of frames from file size & beams*samples.")]
+        public static UInt32 FrameCount                     =    4;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 FrameRate                      =    8;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 HighResolution                 =   12;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 NumRawBeams                    =   16;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 SampleRate                     =   20;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 SamplesPerChannel              =   24;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 ReceiverGain                   =   28;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 WindowStart                    =   32;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 WindowLength                   =   36;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 Reverse                        =   40;
+
+        public static UInt32 SN                             =   44;
+
+        public static UInt32 strDate                        =   48;
+
+        public static UInt32 strHeaderID                    =   80;
+
+        public static UInt32 UserID1                        =  336;
+
+        public static UInt32 UserID2                        =  340;
+
+        public static UInt32 UserID3                        =  344;
+
+        public static UInt32 UserID4                        =  348;
+
+        public static UInt32 StartFrame                     =  352;
+
+        public static UInt32 EndFrame                       =  356;
+
+        public static UInt32 TimeLapse                      =  360;
+
+        public static UInt32 RecordInterval                 =  364;
+
+        public static UInt32 RadioSeconds                   =  368;
+
+        public static UInt32 FrameInterval                  =  372;
+
+        [Obsolete("Obsolete.")]
+        public static UInt32 Flags                          =  376;
+
+        public static UInt32 AuxFlags                       =  380;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 Sspd                           =  384;
+
+        public static UInt32 Flags3D                        =  388;
+
+        public static UInt32 SoftwareVersion                =  392;
+
+        public static UInt32 WaterTemp                      =  396;
+
+        public static UInt32 Salinity                       =  400;
+
+        public static UInt32 PulseLength                    =  404;
+
+        public static UInt32 TxMode                         =  408;
+
+        public static UInt32 VersionFGPA                    =  412;
+
+        public static UInt32 VersionPSuC                    =  416;
+
+        public static UInt32 ThumbnailFI                    =  420;
+
+        [Obsolete("Do not use; query your filesystem instead.")]
+        public static UInt32 FileSize                       =  424;
+
+        [Obsolete("Obsolete; not used.")]
+        public static UInt32 OptionalHeaderSize             =  432;
+
+        [Obsolete("Obsolete; not used.")]
+        public static UInt32 OptionalTailSize               =  440;
+
+        [Obsolete("Obsolete.")]
+        public static UInt32 VersionMinor                   =  448;
+
+        [Obsolete("See frame header instead.")]
+        public static UInt32 LargeLens                      =  452;
+
+    }
+
 }
