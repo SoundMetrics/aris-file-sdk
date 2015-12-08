@@ -1,4 +1,4 @@
-// Copyright 2010-2011 Sound Metrics corporation
+// Copyright 2010-2015 Sound Metrics corporation
 //
 // Approximate Beam Widths for ARIS Telephoto Lens (48 channels)
 // 
