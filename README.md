@@ -1,9 +1,9 @@
-# aris-file-sdk
+# ARIS File SDK
 
 The ARIS File SDK supports the programmatic reading & writing .aris files.
 
-Type definitions and file headers are located in https://github.com/SoundMetrics/aris-file-sdk/tree/master/type_definitions .
-Sample code are located in https://github.com/SoundMetrics/aris-file-sdk/tree/master/sample-code .
+Type definitions and file headers are located in [type_definitions](https://github.com/SoundMetrics/aris-file-sdk/tree/master/type_definitions).
+Sample code are located in [sample-code](https://github.com/SoundMetrics/aris-file-sdk/tree/master/sample-code).
 
 ### Releases
 
