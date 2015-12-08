@@ -19,6 +19,9 @@ directional beams employed by the ARIS.
 The extent of the vertical dimension is the number of samples
 taken along a beam (often "samples per beam" or `BeamCount`).
 
+Each frame in a .aris file is of the same size. Beam count and sample count
+do not vary within a file.
+
 ### Terms
 
 | Term | Description |
@@ -168,3 +171,13 @@ are located in
 | Telephoto | 48  | BeamWidths_ARIS_Telephoto_48.h |
 | Telephoto | 96  | BeamWidths_ARIS_Telephoto_96.h |
 
+### Sanity Checks
+
+Files and file systems are sometimes corrupted. A corrupt file may cause fatal errors
+while processing acoustic sample data. One might perform rudimentary sanity checks on
+the frame header fields in use.
+
+The `FileHeader` and `FrameHeader` both have a signature field that can also be used as a
+sanity check. The signature fields are named `Version`.
+`FileHeader.Version` and `FrameHeader.Version` are both expected to contain the
+signature value `0x05464444` in an uncorrupted file and frame.
