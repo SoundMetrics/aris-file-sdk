@@ -62,7 +62,7 @@ where `FI` is the zero-based frame index.
 the second 1024 is the size of `FrameHeader`). 
 
 Type definitions for `FileHeader` and `FrameHeader` are found in
-[Type Definitions][].
+[type_definitions](https://github.com/SoundMetrics/aris-file-sdk/tree/master/type_definitions).
 
 > #### Implementation Note
 > File offsets should be calculated with 64-bit values 
@@ -162,3 +162,4 @@ are located in
 | 3000      | 128 | BeamWidths_ARIS3000_128.h |
 | Telephoto | 48  | BeamWidths_ARIS_Telephoto_48.h |
 | Telephoto | 96  | BeamWidths_ARIS_Telephoto_96.h |
+
