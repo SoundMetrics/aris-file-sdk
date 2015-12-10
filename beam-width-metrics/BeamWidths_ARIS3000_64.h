@@ -4,6 +4,11 @@
 // 
 // 
 
+#ifndef DEFINE_BEAMWIDTH
+#error "You need to define your own DEFINE_BEAMWIDTH in order to build data structures with it; see ./README.md"
+#endif
+
+
 // average of 4 ARIS 3000 beampatterns for beam centers, smoothed as average of 5 beam spacings 
 
 //                beam, center,  left,  right
