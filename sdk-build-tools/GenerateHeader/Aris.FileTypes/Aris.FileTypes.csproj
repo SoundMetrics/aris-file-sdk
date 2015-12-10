@@ -42,10 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\type-definitions\FileHeader.cs">
+    <Compile Include="..\..\..\type-definitions\CSharp\FileHeader.cs">
       <Link>FileHeader.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\type-definitions\FrameHeader.cs">
+    <Compile Include="..\..\..\type-definitions\CSharp\FrameHeader.cs">
       <Link>FrameHeader.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
