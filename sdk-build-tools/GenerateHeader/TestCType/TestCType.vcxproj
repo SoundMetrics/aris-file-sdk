@@ -71,19 +71,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)..\..\type_definitions;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\type-definitions;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)..\..\type_definitions;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\type-definitions;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)..\..\type_definitions;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\type-definitions;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)..\..\type_definitions;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\type-definitions;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -152,10 +152,10 @@
     <ClCompile Include="TestCType.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\type_definitions\FileHeader.h" />
-    <ClInclude Include="..\..\..\type_definitions\FileHeaderFieldsOnly.h" />
-    <ClInclude Include="..\..\..\type_definitions\FrameHeader.h" />
-    <ClInclude Include="..\..\..\type_definitions\FrameHeaderFieldsOnly.h" />
+    <ClInclude Include="..\..\..\type-definitions\FileHeader.h" />
+    <ClInclude Include="..\..\..\type-definitions\FileHeaderFieldsOnly.h" />
+    <ClInclude Include="..\..\..\type-definitions\FrameHeader.h" />
+    <ClInclude Include="..\..\..\type-definitions\FrameHeaderFieldsOnly.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

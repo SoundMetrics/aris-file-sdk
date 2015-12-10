@@ -23,16 +23,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\type_definitions\FileHeader.h">
+    <ClInclude Include="..\..\..\type-definitions\FileHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\type_definitions\FileHeaderFieldsOnly.h">
+    <ClInclude Include="..\..\..\type-definitions\FileHeaderFieldsOnly.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\type_definitions\FrameHeader.h">
+    <ClInclude Include="..\..\..\type-definitions\FrameHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\type_definitions\FrameHeaderFieldsOnly.h">
+    <ClInclude Include="..\..\..\type-definitions\FrameHeaderFieldsOnly.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

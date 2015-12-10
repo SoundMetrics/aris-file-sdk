@@ -14,7 +14,7 @@ REM ---------------------------------------------------------------------------
 
 SET GEN_HDR_SLN=.\GenerateHeader\GenerateHeader.sln
 SET GEN_HDR_PATH=.\GenerateHeader\GenerateHeader\bin\Release\GenerateHeader.exe
-SET TYPEDEFS_FOLDER=..\type_definitions
+SET TYPEDEFS_FOLDER=..\type-definitions
 
 if NOT EXIST %TYPEDEFS_FOLDER% MKDIR %TYPEDEFS_FOLDER%
 DEL /Y %TYPEDEFS_FOLDER%\*.*
