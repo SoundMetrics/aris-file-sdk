@@ -15,6 +15,8 @@ REM ---------------------------------------------------------------------------
 SET GEN_HDR_SLN=.\GenerateHeader\GenerateHeader.sln
 SET GEN_HDR_PATH=.\GenerateHeader\GenerateHeader\bin\Release\GenerateHeader.exe
 
+SET COMMON_CODE_SLN=..\common-code\VisualStudio\CommonCode.sln
+
 SET TYPEDEFS_FOLDER=..\type-definitions
 SET C_TYPES_FOLDER=%TYPEDEFS_FOLDER%\C
 SET CSharp_TYPES_FOLDER=%TYPEDEFS_FOLDER%\CSharp
@@ -66,3 +68,22 @@ call GenerateHeader\TestCSharpType\bin\Release\TestCSharpType.exe Aris.FileTypes
 call GenerateHeader\Release\TestCType.exe ArisFrameHeader
 call GenerateHeader\Release\TestCType.exe ArisFrameHeaderFieldsOnly
 call GenerateHeader\TestCSharpType\bin\Release\TestCSharpType.exe Aris.FileTypes.ArisFrameHeader
+
+REM ---------------------------------------------------------------------------
+REM Build common native code.
+REM ---------------------------------------------------------------------------
+
+msbuild %COMMON_CODE_SLN% /m /t:Clean /p:Configuration="Debug"   /p:Platform="Win32"
+msbuild %COMMON_CODE_SLN% /m /t:Clean /p:Configuration="Release" /p:Platform="Win32"
+msbuild %COMMON_CODE_SLN% /m /t:Clean /p:Configuration="Debug"   /p:Platform="x64"
+msbuild %COMMON_CODE_SLN% /m /t:Clean /p:Configuration="Release" /p:Platform="x64"
+
+msbuild %COMMON_CODE_SLN% /m /t:Build /p:Configuration="Debug"   /p:Platform="Win32"
+msbuild %COMMON_CODE_SLN% /m /t:Build /p:Configuration="Release" /p:Platform="Win32"
+msbuild %COMMON_CODE_SLN% /m /t:Build /p:Configuration="Debug"   /p:Platform="x64"
+msbuild %COMMON_CODE_SLN% /m /t:Build /p:Configuration="Release" /p:Platform="x64"
+
+REM ---------------------------------------------------------------------------
+REM Aris.FileTypes is built as part of GenerateHeader.sln.
+REM ---------------------------------------------------------------------------
+

@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Aris.FileSDK.Native</id>
-    <version>0.0.0.1</version><!-- specify version at the command line script -->
+    <version>0.0.0.0</version><!-- specify version at the command line script -->
     <title>Aris.Aris.FileSDK.Native</title>
     <authors>Sound Metrics Corporation</authors>
     <owners>Sound Metrics Corporation</owners>

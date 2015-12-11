@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Aris.FileSDK.Managed</id>
+    <version>0.0.0.0</version><!-- specify version at the command line script -->
+    <title>Aris.Aris.FileSDK.Managed</title>
+    <authors>Sound Metrics Corporation</authors>
+    <owners>Sound Metrics Corporation</owners>
+    <!--<licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Managed assemblies for the ARIS File SDK.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2010-2015</copyright>
+
+    <dependencies/>
+  </metadata>
+
+  <files>
+    <file src="..\..\sdk-build-tools\GenerateHeader\Aris.FileTypes\bin\Release\Aris.FileTypes.*" target="lib\net45"/>
+  </files>
+</package>
