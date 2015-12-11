@@ -53,7 +53,7 @@ int main(int argc, char** argv)
             [typeName](const auto& ti) { return strcmp(typeName, ti.name) == 0; });
 
         if (it != std::end(types)) {
-            printf("%s is %d bytes\n", typeName, it->size);
+            printf("%s is %zu bytes\n", typeName, it->size);
         }
         else {
             fprintf(stderr, "Unexpected input: '%s'\n", typeName);
