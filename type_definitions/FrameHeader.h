@@ -49,25 +49,26 @@ struct ArisFrameHeader {
 
     int32_t Intensity;
 
-    // In frame  fromsonar?
+    // Note: 0-24 dB
     uint32_t ReceiverGain;
 
-    // In frame  fromsonar? Which values?
+    // CPU temperature
+    // Note: Celsius
     uint32_t DegC1;
 
-    // In frame  fromsonar? Which values?
+    // Power supply temperature
+    // Note: Celsius
     uint32_t DegC2;
 
-    // review
+    // % relative humidity
     uint32_t Humidity;
 
-    // review
+    // Focus units 0-1000
     uint32_t Focus;
 
-    // review
+    // OBSOLETE: Unused.
     uint32_t Battery;
 
-    // port 700 user data?
     float UserValue1;
 
     float UserValue2;
@@ -139,7 +140,7 @@ struct ArisFrameHeader {
 
     uint32_t TargetPresent;
 
-    // review
+    // OBSOLETE: Unused.
     uint32_t FirmwareRevision;
 
     uint32_t Flags;
@@ -308,7 +309,7 @@ struct ArisFrameHeader {
     // OBSOLETE: Obsolete
     uint64_t ReservedEK;
 
-    // review: Error flag code bits
+    // Error flag code bits
     uint32_t ArisErrorFlagsUint;
 
     // Missed packet count for Ethernet statistics reporting
@@ -331,12 +332,15 @@ struct ArisFrameHeader {
     float Pressure;
 
     // Battery input voltage before power steering
+    // Note: mV
     float BatteryVoltage;
 
     // Main cable input voltage before power steering
+    // Note: mV
     float MainVoltage;
 
-    // Input voltage after power steering; filtered voltage now
+    // Input voltage after power steering; filtered voltage
+    // Note: mV
     float SwitchVoltage;
 
     // Note: Added 14-Aug-2012 for AutomaticRecording
@@ -523,6 +527,7 @@ enum ArisFrameHeaderOffsets {
 
     ArisFrameHeaderOffset_Focus              =   84,
 
+    // OBSOLETE: Unused.
     ArisFrameHeaderOffset_Battery            =   88,
 
     ArisFrameHeaderOffset_UserValue1         =   92,
@@ -581,6 +586,7 @@ enum ArisFrameHeaderOffsets {
 
     ArisFrameHeaderOffset_TargetPresent      =  208,
 
+    // OBSOLETE: Unused.
     ArisFrameHeaderOffset_FirmwareRevision   =  212,
 
     ArisFrameHeaderOffset_Flags              =  216,
