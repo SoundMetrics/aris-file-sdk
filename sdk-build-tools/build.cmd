@@ -29,7 +29,7 @@ REM Build the tool that generates types for programming languages.
 REM ---------------------------------------------------------------------------
 
 msbuild %GEN_HDR_SLN% /m /t:Clean /p:Configuration="Release"
-msbuild %GEN_HDR_SLN% /m /t:Build /p:Configuration="Release"
+msbuild %GEN_HDR_SLN% /m /t:GenerateHeader /p:Configuration="Release"
 
 REM ---------------------------------------------------------------------------
 REM Generate the types for programming languages.

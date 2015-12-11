@@ -49,25 +49,26 @@ namespace Aris.FileTypes
 
         public int Intensity;
 
-        // In frame  fromsonar?
+        // Note: 0-24 dB
         public UInt32 ReceiverGain;
 
-        // In frame  fromsonar? Which values?
+        // CPU temperature
+        // Note: Celsius
         public UInt32 DegC1;
 
-        // In frame  fromsonar? Which values?
+        // Power supply temperature
+        // Note: Celsius
         public UInt32 DegC2;
 
-        // review
+        // % relative humidity
         public UInt32 Humidity;
 
-        // review
+        // Focus units 0-1000
         public UInt32 Focus;
 
-        // review
+        [Obsolete("Unused.")]
         public UInt32 Battery;
 
-        // port 700 user data?
         public float UserValue1;
 
         public float UserValue2;
@@ -139,7 +140,7 @@ namespace Aris.FileTypes
 
         public UInt32 TargetPresent;
 
-        // review
+        [Obsolete("Unused.")]
         public UInt32 FirmwareRevision;
 
         public UInt32 Flags;
@@ -309,7 +310,7 @@ namespace Aris.FileTypes
         [Obsolete("Obsolete")]
         public UInt64 ReservedEK;
 
-        // review: Error flag code bits
+        // Error flag code bits
         public UInt32 ArisErrorFlagsUint;
 
         // Missed packet count for Ethernet statistics reporting
@@ -332,12 +333,15 @@ namespace Aris.FileTypes
         public float Pressure;
 
         // Battery input voltage before power steering
+        // Note: mV
         public float BatteryVoltage;
 
         // Main cable input voltage before power steering
+        // Note: mV
         public float MainVoltage;
 
-        // Input voltage after power steering; filtered voltage now
+        // Input voltage after power steering; filtered voltage
+        // Note: mV
         public float SwitchVoltage;
 
         // Note: Added 14-Aug-2012 for AutomaticRecording
@@ -522,6 +526,7 @@ namespace Aris.FileTypes
 
         public static UInt32 Focus                          =   84;
 
+        [Obsolete("Unused.")]
         public static UInt32 Battery                        =   88;
 
         public static UInt32 UserValue1                     =   92;
@@ -580,6 +585,7 @@ namespace Aris.FileTypes
 
         public static UInt32 TargetPresent                  =  208;
 
+        [Obsolete("Unused.")]
         public static UInt32 FirmwareRevision               =  212;
 
         public static UInt32 Flags                          =  216;
