@@ -17,6 +17,8 @@ SET GEN_HDR_PATH=.\GenerateHeader\GenerateHeader\bin\Release\GenerateHeader.exe
 
 SET COMMON_CODE_SLN=..\common-code\VisualStudio\CommonCode.sln
 
+SET SAMPLE_CODE_SLN=..\sample-code\extract-readings\VisualStudio\VisualStudio.sln
+
 SET TYPEDEFS_FOLDER=..\type-definitions
 SET C_TYPES_FOLDER=%TYPEDEFS_FOLDER%\C
 SET CSharp_TYPES_FOLDER=%TYPEDEFS_FOLDER%\CSharp
@@ -28,7 +30,7 @@ REM ---------------------------------------------------------------------------
 REM Build the tool that generates types for programming languages.
 REM ---------------------------------------------------------------------------
 
-nuget restore GenerateHeader\GenerateHeader.sln
+NugetPkg\nuget.exe restore GenerateHeader\GenerateHeader.sln
 
 msbuild %GEN_HDR_SLN% /m /t:Clean /p:Configuration="Release"
 msbuild %GEN_HDR_SLN% /m /t:GenerateHeader /p:Configuration="Release"
@@ -89,3 +91,9 @@ REM ---------------------------------------------------------------------------
 REM Aris.FileTypes is built as part of GenerateHeader.sln.
 REM ---------------------------------------------------------------------------
 
+REM ---------------------------------------------------------------------------
+REM Build sample code.
+REM ---------------------------------------------------------------------------
+
+msbuild %SAMPLE_CODE_SLN% /m /t:Clean /p:Configuration="Release" /p:Platform="x86"
+msbuild %SAMPLE_CODE_SLN% /m /t:Build /p:Configuration="Release" /p:Platform="x86"
