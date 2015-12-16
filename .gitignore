@@ -195,3 +195,10 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+# Paket-related files
+sdk-build-tools/GenerateHeader/.paket/paket.exe
+sdk-build-tools/GenerateHeader/paket-files/
+
+# Generated files
+sdk-build-tools/GenerateHeader/Aris.FileTypes/Properties/AssemblyInfo2.cs

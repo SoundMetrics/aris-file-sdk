@@ -1,0 +1,3 @@
+github soundmetrics/build-tools binaries/BuildInfo.exe
+github soundmetrics/build-tools binaries/CommandLine.dll
+github soundmetrics/build-tools binaries/FSharp.Core.dll
