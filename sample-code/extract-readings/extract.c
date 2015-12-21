@@ -121,7 +121,7 @@ int extract(FILE* fpIn, FILE* fpOut) {
     }
 
     // ARIS recordings have a consistent frame size all the way through the file.
-    frameSize = frameHeader.SamplesPerBeam * get_beams_from_pingmode(frameHeader.PingMode);
+    frameSize = (long)(frameHeader.SamplesPerBeam * get_beams_from_pingmode(frameHeader.PingMode));
     frameCount = dataSize / frameSize;
 
     fprintf(fpOut, "FrameIndex,FrameTime,WaterTemp\n");
