@@ -203,3 +203,4 @@ sdk-build-tools/GenerateHeader/paket-files/
 # Generated files
 sdk-build-tools/GenerateHeader/Aris.FileTypes/Properties/AssemblyInfo2.cs
 git-hash.txt
+sample-code/extract-readings/mingw/extract.exe
