@@ -18,7 +18,7 @@ int validate_inputs(int argc,
                     char** argv,
                     const char** inputPath,
                     const char** outputPath);
-void show_usage();
+void show_usage(void);
 int extract(FILE* fpIn, FILE* fpOut);
 
 int main(int argc, char** argv ) {
@@ -57,7 +57,7 @@ int main(int argc, char** argv ) {
     return result;
 }
 
-void show_usage() {
+void show_usage(void) {
 
     fprintf(stderr, "USAGE:\n");
     fprintf(stderr, "    extract <input-path> <output-path>\n");
@@ -123,6 +123,7 @@ int extract(FILE* fpIn, FILE* fpOut) {
     // ARIS recordings have a consistent frame size all the way through the file.
     frameSize = (long)(frameHeader.SamplesPerBeam * get_beams_from_pingmode(frameHeader.PingMode));
     frameCount = dataSize / frameSize;
+    (void)frameCount; // not actually using this variable
 
     fprintf(fpOut, "FrameIndex,FrameTime,WaterTemp\n");
 
