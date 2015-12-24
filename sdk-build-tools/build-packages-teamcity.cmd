@@ -14,25 +14,14 @@ IF "%1" == "" GOTO Usage
 
 
 SET BUILD_NUMBER=%1
-ECHO BUILD_NUMBER=%BUILD_NUMBER%
 
 REM ---------------------------------------------------------------------------
 REM Build packages
 REM ---------------------------------------------------------------------------
 
 SET /P COMPONENTS_VERSION=<ver.txt
-ECHO COMPONENTS_VERSION=%COMPONENTS_VERSION%
 
 SET BUILD_VERSION=%COMPONENTS_VERSION%.%BUILD_NUMBER%
-ECHO BUILD_VERSION=%BUILD_VERSION%
-
-REM sanity checks: something is haywire in the TeamCity build.
-ECHO BUILD_NUMBER=%BUILD_NUMBER%
-ECHO COMPONENTS_VERSION=%COMPONENTS_VERSION%
-ECHO BUILD_VERSION=%BUILD_VERSION%
-ECHO These should end in .%BUILD_NUMBER%:
-ECHO COMBINE1=%COMPONENTS_VERSION%.%BUILD_NUMBER%
-ECHO COMBINE2=%COMPONENTS_VERSION% . %BUILD_NUMBER%
 
 call build-packages.cmd %BUILD_VERSION%
 
