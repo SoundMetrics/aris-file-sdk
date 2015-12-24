@@ -21,7 +21,7 @@ REM Build packages
 REM ---------------------------------------------------------------------------
 
 SET /P COMPONENTSVERSION=<ver.txt
-ECHO COMPONENTSVERSION='%COMPONENTSVERSION%'
+ECHO COMPONENTSVERSION=%COMPONENTSVERSION%
 
 call build-packages.cmd %COMPONENTSVERSION%.%BUILD_NUMBER%
 

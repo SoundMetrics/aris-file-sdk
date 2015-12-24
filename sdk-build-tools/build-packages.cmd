@@ -14,6 +14,8 @@ IF "%1" == "" GOTO Usage
 
 SET VERSION_STRING=%1
 
+ECHO VERSION_STRING=%VERSION_STRING%
+
 
 REM ---------------------------------------------------------------------------
 REM Do the work
