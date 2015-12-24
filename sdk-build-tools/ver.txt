@@ -1,3 +1,1 @@
 2.7.0
-the above line must be in the form x.y.z for
-nuget packaging.
