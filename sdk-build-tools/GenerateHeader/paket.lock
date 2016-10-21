@@ -1,7 +1,6 @@
 
 GITHUB
   remote: soundmetrics/build-tools
-  specs:
     binaries/BuildInfo.exe (a4c492e590d6991de3adac735762d6403f858753)
     binaries/CommandLine.dll (a4c492e590d6991de3adac735762d6403f858753)
     binaries/FSharp.Core.dll (a4c492e590d6991de3adac735762d6403f858753)
