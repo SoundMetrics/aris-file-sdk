@@ -10,7 +10,7 @@ This sample program extracts a few header fields from frames in a `.aris` file
 ### C Type Definitions
 
 There are two header files, `FileHeader.h` and `FrameHeader.h`, which can be found in
-[type_definitions](https://github.com/SoundMetrics/aris-file-sdk/tree/master/type_definitions)
+[type_definitions](https://github.com/SoundMetrics/aris-file-sdk/tree/master/type-definitions)
 --these files
 are pre-generated for ease of use. These headers define structs for use in interpreting the data
 in a `.aris` file.
