@@ -16,6 +16,8 @@ From the root of this repository:
 
 - **[type-definitions](https://github.com/SoundMetrics/aris-file-sdk/tree/master/type-definitions)** Contains type definitions and headers useful for processing ARIS recordings.
 
+See also [docs/understanding-aris-data.md](docs/understanding-aris-data.md).
+
 ### Releases
 
 Releases of this SDK are available [here](https://github.com/SoundMetrics/aris-file-sdk/releases).
