@@ -171,6 +171,8 @@ are located in
 | Telephoto | 48  | BeamWidths_ARIS_Telephoto_48.h |
 | Telephoto | 96  | BeamWidths_ARIS_Telephoto_96.h |
 
+<img src="SDK Illustrations_2.png" height="500" alt="Illustration of Beam Width">
+
 ### Sanity Checks
 
 Files and file systems are sometimes corrupted. A corrupt file may cause fatal errors
