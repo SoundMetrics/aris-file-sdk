@@ -396,13 +396,13 @@ struct ArisFrameHeader {
 
     uint32_t RollMotorErrorCode;
 
-    // Low-resolution magnetic encoder absolute pan position
+    // Low-resolution magnetic encoder absolute pan position (NaN indicates no arm detected for axis since 2.6.0.8403)
     float PanAbsPosition;
 
-    // Low-resolution magnetic encoder absolute tilt position
+    // Low-resolution magnetic encoder absolute tilt position (NaN indicates no arm detected for axis since 2.6.0.8403)
     float TiltAbsPosition;
 
-    // Low-resolution magnetic encoder absolute roll position
+    // Low-resolution magnetic encoder absolute roll position (NaN indicates no arm detected for axis since 2.6.0.8403)
     float RollAbsPosition;
 
     // Accelerometer outputs from AR2 CPU board sensor
@@ -477,8 +477,11 @@ struct ArisFrameHeader {
     // Note: microseconds
     uint32_t GpsTimeAge;
 
+    // bit 0 = Defender
+    uint32_t SystemVariant;
+
     // Padding to fill out to 1024 bytes
-    char padding[292];
+    char padding[288];
 
 };
 
@@ -813,6 +816,8 @@ enum ArisFrameHeaderOffsets {
     ArisFrameHeaderOffset_RollVelocity       =  724,
 
     ArisFrameHeaderOffset_GpsTimeAge         =  728,
+
+    ArisFrameHeaderOffset_SystemVariant      =  732,
 
 };
 
