@@ -397,13 +397,13 @@ namespace Aris.FileTypes
 
         public UInt32 RollMotorErrorCode;
 
-        // Low-resolution magnetic encoder absolute pan position
+        // Low-resolution magnetic encoder absolute pan position (NaN indicates no arm detected for axis since 2.6.0.8403)
         public float PanAbsPosition;
 
-        // Low-resolution magnetic encoder absolute tilt position
+        // Low-resolution magnetic encoder absolute tilt position (NaN indicates no arm detected for axis since 2.6.0.8403)
         public float TiltAbsPosition;
 
-        // Low-resolution magnetic encoder absolute roll position
+        // Low-resolution magnetic encoder absolute roll position (NaN indicates no arm detected for axis since 2.6.0.8403)
         public float RollAbsPosition;
 
         // Accelerometer outputs from AR2 CPU board sensor
@@ -478,8 +478,11 @@ namespace Aris.FileTypes
         // Note: microseconds
         public UInt32 GpsTimeAge;
 
+        // bit 0 = Defender
+        public UInt32 SystemVariant;
+
         // Padding to fill out to 1024 bytes
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 292)]
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 288)]
         public string padding;
 
     }
@@ -812,6 +815,8 @@ namespace Aris.FileTypes
         public static UInt32 RollVelocity                   =  724;
 
         public static UInt32 GpsTimeAge                     =  728;
+
+        public static UInt32 SystemVariant                  =  732;
 
     }
 
