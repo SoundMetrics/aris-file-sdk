@@ -121,8 +121,6 @@ is non-zero.
 > ARIS. Systems integrators must always check whether this flag
 > is zero. This is covered in the
 > [ARIS Integration SDK](https://github.com/SoundMetrics/aris-integration-sdk).
->
-> (The **ARIS Integration SDK** is not yet released.)
 
 ### Constructing Images From Samples
 
