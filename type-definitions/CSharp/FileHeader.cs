@@ -17,7 +17,7 @@ namespace Aris.FileTypes
         public UInt32 Version;
 
         // Total frames in file
-        [Obsolete("Calculate the number of frames from file size & beams*samples.")]
+        // Note: Writers should populate; readers should calculate the number of frames from file size & beams*samples.
         public UInt32 FrameCount;
 
         // Initial recorded frame rate
@@ -29,7 +29,7 @@ namespace Aris.FileTypes
         public UInt32 HighResolution;
 
         // ARIS 3000 = 128/64, ARIS 1800 = 96/48, ARIS 1200 = 48
-        [Obsolete("See frame header instead.")]
+        // Note: Writers should populate; readers should See frame header instead.
         public UInt32 NumRawBeams;
 
         // 1/Sample Period
@@ -37,7 +37,7 @@ namespace Aris.FileTypes
         public float SampleRate;
 
         // Number of range samples in each beam
-        [Obsolete("See frame header instead.")]
+        // Note: Writers should populate; readers should See frame header instead.
         public UInt32 SamplesPerChannel;
 
         // Relative gain in dB:  0 - 40
@@ -165,7 +165,6 @@ namespace Aris.FileTypes
     {
         public static UInt32 Version                        =    0;
 
-        [Obsolete("Calculate the number of frames from file size & beams*samples.")]
         public static UInt32 FrameCount                     =    4;
 
         [Obsolete("See frame header instead.")]
@@ -174,13 +173,11 @@ namespace Aris.FileTypes
         [Obsolete("See frame header instead.")]
         public static UInt32 HighResolution                 =   12;
 
-        [Obsolete("See frame header instead.")]
         public static UInt32 NumRawBeams                    =   16;
 
         [Obsolete("See frame header instead.")]
         public static UInt32 SampleRate                     =   20;
 
-        [Obsolete("See frame header instead.")]
         public static UInt32 SamplesPerChannel              =   24;
 
         [Obsolete("See frame header instead.")]

@@ -17,7 +17,7 @@ struct ArisFileHeader {
     uint32_t Version;
 
     // Total frames in file
-    // OBSOLETE: Calculate the number of frames from file size & beams*samples.
+    // Note: Writers should populate; readers should calculate the number of frames from file size & beams*samples.
     uint32_t FrameCount;
 
     // Initial recorded frame rate
@@ -29,7 +29,7 @@ struct ArisFileHeader {
     uint32_t HighResolution;
 
     // ARIS 3000 = 128/64, ARIS 1800 = 96/48, ARIS 1200 = 48
-    // OBSOLETE: See frame header instead.
+    // Note: Writers should populate; readers should See frame header instead.
     uint32_t NumRawBeams;
 
     // 1/Sample Period
@@ -37,7 +37,7 @@ struct ArisFileHeader {
     float SampleRate;
 
     // Number of range samples in each beam
-    // OBSOLETE: See frame header instead.
+    // Note: Writers should populate; readers should See frame header instead.
     uint32_t SamplesPerChannel;
 
     // Relative gain in dB:  0 - 40
@@ -165,7 +165,6 @@ struct ArisFileHeader {
 enum ArisFileHeaderOffsets {
     ArisFileHeaderOffset_Version             =    0,
 
-    // OBSOLETE: Calculate the number of frames from file size & beams*samples.
     ArisFileHeaderOffset_FrameCount          =    4,
 
     // OBSOLETE: See frame header instead.
@@ -174,13 +173,11 @@ enum ArisFileHeaderOffsets {
     // OBSOLETE: See frame header instead.
     ArisFileHeaderOffset_HighResolution      =   12,
 
-    // OBSOLETE: See frame header instead.
     ArisFileHeaderOffset_NumRawBeams         =   16,
 
     // OBSOLETE: See frame header instead.
     ArisFileHeaderOffset_SampleRate          =   20,
 
-    // OBSOLETE: See frame header instead.
     ArisFileHeaderOffset_SamplesPerChannel   =   24,
 
     // OBSOLETE: See frame header instead.
