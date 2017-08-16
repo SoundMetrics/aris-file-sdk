@@ -17,6 +17,10 @@ Please search on the [issue track](../) before creating one.
 <!--- If describing a bug, tell us what happens instead of the expected behavior -->
 <!--- If suggesting a change/improvement, explain the difference from current behavior -->
 
+## Context
+<!--- How has this issue affected you? What are you trying to accomplish? -->
+<!--- Providing context helps us come up with a solution that is most useful in the real world -->
+
 ## Steps to Reproduce (for bugs)
 <!--- Provide a link to a live example, or an unambiguous set of steps to -->
 <!--- reproduce this bug. Include code to reproduce, if relevant -->
@@ -39,8 +43,4 @@ Please search on the [issue track](../) before creating one.
   * Joystick?
   * ARIS: Explorer or Defender?
   * If Defender, is it tethered?
-
-## Context
-<!--- How has this issue affected you? What are you trying to accomplish? -->
-<!--- Providing context helps us come up with a solution that is most useful in the real world -->
 
