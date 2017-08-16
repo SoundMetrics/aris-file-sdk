@@ -29,7 +29,7 @@ namespace Aris.FileTypes
         public UInt32 HighResolution;
 
         // ARIS 3000 = 128/64, ARIS 1800 = 96/48, ARIS 1200 = 48
-        // Note: Writers should populate; readers should See frame header instead.
+        // Note: Writers should populate; readers should see frame header instead.
         public UInt32 NumRawBeams;
 
         // 1/Sample Period
@@ -37,7 +37,7 @@ namespace Aris.FileTypes
         public float SampleRate;
 
         // Number of range samples in each beam
-        // Note: Writers should populate; readers should See frame header instead.
+        // Note: Writers should populate; readers should see frame header instead.
         public UInt32 SamplesPerChannel;
 
         // Relative gain in dB:  0 - 40

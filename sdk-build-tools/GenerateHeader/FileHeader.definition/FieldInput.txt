@@ -3,9 +3,9 @@ Version,uint,,File format version DDF_05 = 0x05464444,,
 FrameCount,uint,,Total frames in file,Writers should populate; readers should calculate the number of frames from file size & beams*samples.,
 FrameRate,uint,,Initial recorded frame rate,,See frame header instead.
 HighResolution,uint,,"Non-zero if HF, zero if LF",,See frame header instead.
-NumRawBeams,uint,,"ARIS 3000 = 128/64, ARIS 1800 = 96/48, ARIS 1200 = 48",Writers should populate; readers should See frame header instead.,
+NumRawBeams,uint,,"ARIS 3000 = 128/64, ARIS 1800 = 96/48, ARIS 1200 = 48",Writers should populate; readers should see frame header instead.,
 SampleRate,float,,1/Sample Period,,See frame header instead.
-SamplesPerChannel,uint,,Number of range samples in each beam,Writers should populate; readers should See frame header instead.,
+SamplesPerChannel,uint,,Number of range samples in each beam,Writers should populate; readers should see frame header instead.,
 ReceiverGain,uint,,Relative gain in dB:  0 - 40,,See frame header instead.
 WindowStart,float,,Image window start range in meters (code [0..31] in DIDSON),,See frame header instead.
 WindowLength,float,,Image window length in meters  (code [0..3] in DIDSON),,See frame header instead.
