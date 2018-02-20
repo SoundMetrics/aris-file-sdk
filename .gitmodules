@@ -1,3 +1,0 @@
-[submodule "utility-code/submodules/build-tools"]
-	path = utility-code/submodules/build-tools
-	url = https://github.com/SoundMetrics/build-tools.git
