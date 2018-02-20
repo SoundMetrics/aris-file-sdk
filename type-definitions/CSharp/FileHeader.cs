@@ -10,8 +10,8 @@ namespace Aris.FileTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
     public struct ArisFileHeader
     {
-        public static int ArisFileSignature =  0x05464444;
-        public static int ArisFrameSignature = 0x05464444;
+        public const uint ArisFileSignature =  0x05464444;
+        public const uint ArisFrameSignature = 0x05464444;
 
         // File format version DDF_05 = 0x05464444
         public UInt32 Version;

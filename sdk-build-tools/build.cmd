@@ -12,6 +12,8 @@ REM     C# compiler
 REM     MSVC++ compiler
 REM ---------------------------------------------------------------------------
 
+SETLOCAL
+
 SET GEN_HDR_SLN=.\GenerateHeader\GenerateHeader.sln
 SET GEN_HDR_PATH=.\GenerateHeader\GenerateHeader\bin\Release\GenerateHeader.exe
 
@@ -97,3 +99,5 @@ REM ---------------------------------------------------------------------------
 
 msbuild %SAMPLE_CODE_SLN% /m /t:Clean /p:Configuration="Release" /p:Platform="x86"
 msbuild %SAMPLE_CODE_SLN% /m /t:Build /p:Configuration="Release" /p:Platform="x86"
+
+ENDLOCAL

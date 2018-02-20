@@ -10,8 +10,8 @@ namespace Aris.FileTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
     public struct ArisFrameHeader
     {
-        public static int ArisFileSignature =  0x05464444;
-        public static int ArisFrameSignature = 0x05464444;
+        public const uint ArisFileSignature =  0x05464444;
+        public const uint ArisFrameSignature = 0x05464444;
 
         // Frame number in file
         public UInt32 FrameIndex;
