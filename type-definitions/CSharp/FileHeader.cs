@@ -1,5 +1,7 @@
 // FileHeader.cs
 
+// THIS IS GENERATED WITH GenerateHeader, DO NOT MODIFY
+
 namespace Aris.FileTypes
 {
     
