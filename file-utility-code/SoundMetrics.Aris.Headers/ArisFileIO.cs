@@ -155,7 +155,7 @@ namespace SoundMetrics.Aris.Headers
             var length = Marshal.SizeOf<T>();
             var bytes = ReadBytes(position, length, stream);
 
-            return Matchf(bytes,
+            return Match(bytes,
                 onOk: result => Result<T, ErrorInfo>.Ok(convert(result, 0)),
                 onError: msg => Result<T, ErrorInfo>.Error(msg));
         }

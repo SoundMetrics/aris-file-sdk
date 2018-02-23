@@ -160,7 +160,7 @@ namespace SoundMetrics.Aris.Headers
                                     )
                             );
 
-                return Matchf(fields,
+                return Match(fields,
                     onOk: t => {
                         var (fileSignature, beamCount, sampleCount, frameCount, traits) = t;
 
@@ -243,7 +243,7 @@ namespace SoundMetrics.Aris.Headers
                                 )
                          );
 
-                return Matchf(fields,
+                return Match(fields,
                     onOk: flds => {
                         var (fileSignature, sampleCount, pingMode) = flds;
                         return Result<(uint, uint, uint), ErrorInfo>.Ok((

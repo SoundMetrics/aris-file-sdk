@@ -23,7 +23,7 @@ namespace SoundMetrics.Aris.Headers
             public static Result<bool, ErrorInfo> IsLastFrameCorrupt(Stream stream)
             {
                 return
-                    Matchf(FileTraits.DetermineFileTraits(stream),
+                    Match(FileTraits.DetermineFileTraits(stream),
                         onOk: traits => {
                             Result<bool, ErrorInfo> isCorrupt;
                             var count = traits.CalculatedFrameCount;
@@ -43,7 +43,7 @@ namespace SoundMetrics.Aris.Headers
                                 var frameOffset = CalculateFrameOffset(fi, traits);
 
                                 isCorrupt =
-                                    Matchf(ReadUInt32(frameOffset + ArisFrameHeaderOffsets.Version, stream),
+                                    Match(ReadUInt32(frameOffset + ArisFrameHeaderOffsets.Version, stream),
                                         onOk: version => Result<bool, ErrorInfo>.Ok(traits.FileSignature != version),
                                         onError: errorInfo => Result<bool, ErrorInfo>.Ok(true));
                             }
@@ -56,7 +56,7 @@ namespace SoundMetrics.Aris.Headers
 
             public static Result<FileCheckResult, ErrorInfo> CheckFileForProblems(string path, Stream stream)
             {
-                return Matchf(FileTraits.DetermineFileTraits(stream),
+                return Match(FileTraits.DetermineFileTraits(stream),
                     onOk: traits =>
                     {
                         return Result<FileCheckResult, ErrorInfo>.Ok(new FileCheckResult(
@@ -64,7 +64,7 @@ namespace SoundMetrics.Aris.Headers
                             invalidHeaderValues: false,
                             isFileHeaderFrameCountCorrect:
                                 traits.FileHeaderFrameCount == (int)Floor(traits.CalculatedFrameCount),
-                            isLastFrameCorrupted: Matchf(IsLastFrameCorrupt(stream),
+                            isLastFrameCorrupted: Match(IsLastFrameCorrupt(stream),
                                                     onOk: isCorrupt => isCorrupt,
                                                     onError: msg => false),
                             isLastFramePartial: traits.CalculatedFrameCount != Floor(traits.CalculatedFrameCount),
@@ -76,7 +76,7 @@ namespace SoundMetrics.Aris.Headers
 
             public static Result<uint, ErrorInfo> ReverseCountBadTrailingFrames(Stream stream)
             {
-                return Matchf(FileTraits.DetermineFileTraits(stream),
+                return Match(FileTraits.DetermineFileTraits(stream),
                     onOk: traits => {
                         var frameCount = (uint)Floor(traits.CalculatedFrameCount);
                         if (frameCount == 0)
@@ -107,7 +107,7 @@ namespace SoundMetrics.Aris.Headers
                             bool IsBad(uint frameIndex)
                             {
                                 var frameOffset = CalculateFrameOffset(frameIndex, traits);
-                                return Matchf(ReadUInt32(frameOffset + ArisFrameHeaderOffsets.Version, stream),
+                                return Match(ReadUInt32(frameOffset + ArisFrameHeaderOffsets.Version, stream),
                                     onOk: version => traits.FileSignature != version,
                                     onError: msg => true);
                             }
