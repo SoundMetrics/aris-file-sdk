@@ -15,6 +15,10 @@ namespace SoundMetrics.Aris.Headers
     using Int64Result = Result<Int64, ErrorInfo>;
     using UInt64Result = Result<UInt64, ErrorInfo>;
 
+    /// <summary>
+    /// Provides IO functions for typed reads and reads at specified positions
+    /// in a stream.
+    /// </summary>
     public static class ArisFileIO
     {
         /// <summary>

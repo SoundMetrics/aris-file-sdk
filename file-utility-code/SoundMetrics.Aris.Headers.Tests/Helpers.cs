@@ -42,8 +42,8 @@ namespace SoundMetrics.Aris.Headers.Tests
 
             buf.AppendLine($"Path                   = [{result.Path}]");
             buf.AppendLine($"InvalidHeaderValues    = [{result.InvalidHeaderValues}]");
-            buf.AppendLine($"IsMHFrameCountCorrect  = [{result.IsMHFrameCountCorrect}]");
-            buf.AppendLine($"IsLastFrameCorrupt     = [{result.IsLastFrameCorrupt}]");
+            buf.AppendLine($"IsMHFrameCountCorrect  = [{result.IsFileHeaderFrameCountCorrect}]");
+            buf.AppendLine($"IsLastFrameCorrupt     = [{result.IsLastFrameCorrupted}]");
             buf.AppendLine($"IsLastFramePartial     = [{result.IsLastFramePartial}]");
             buf.AppendLine($"IsFileEmpty            = [{result.IsFileEmpty}]");
             buf.AppendLine($"CalculatedFrameCount   = [{result.CalculatedFrameCount}]");

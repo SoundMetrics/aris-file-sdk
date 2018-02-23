@@ -62,9 +62,9 @@ namespace SoundMetrics.Aris.Headers
                         return Result<FileCheckResult, ErrorInfo>.Ok(new FileCheckResult(
                             path,
                             invalidHeaderValues: false,
-                            isMHFrameCountCorrect:
+                            isFileHeaderFrameCountCorrect:
                                 traits.FileHeaderFrameCount == (int)Floor(traits.CalculatedFrameCount),
-                            isLastFrameCorrupt: Matchf(IsLastFrameCorrupt(stream),
+                            isLastFrameCorrupted: Matchf(IsLastFrameCorrupt(stream),
                                                     onOk: isCorrupt => isCorrupt,
                                                     onError: msg => false),
                             isLastFramePartial: traits.CalculatedFrameCount != Floor(traits.CalculatedFrameCount),

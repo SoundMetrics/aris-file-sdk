@@ -4,7 +4,7 @@ using System;
 
 namespace SoundMetrics.Aris.Headers
 {
-    public static class ArgChecks
+    internal static class ArgChecks
     {
         public static void CheckString(string s, string argName)
         {

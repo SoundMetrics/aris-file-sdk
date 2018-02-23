@@ -82,8 +82,8 @@ namespace SoundMetrics.Aris.Headers.Tests
             var expected = new FileCheckResult(
                 path: path,
                 invalidHeaderValues: false,
-                isMHFrameCountCorrect: true,
-                isLastFrameCorrupt: false,
+                isFileHeaderFrameCountCorrect: true,
+                isLastFrameCorrupted: false,
                 isLastFramePartial: false,
                 isFileEmpty: true,
                 calculatedFrameCount: 0);
@@ -132,8 +132,8 @@ namespace SoundMetrics.Aris.Headers.Tests
             var expected = new FileCheckResult(
                 path: path,
                 invalidHeaderValues: false,
-                isMHFrameCountCorrect: false,
-                isLastFrameCorrupt: true,
+                isFileHeaderFrameCountCorrect: false,
+                isLastFrameCorrupted: true,
                 isLastFramePartial: true,
                 isFileEmpty: true,
                 calculatedFrameCount: 1.0 / frameSize);
@@ -177,8 +177,8 @@ namespace SoundMetrics.Aris.Headers.Tests
             var expected = new FileCheckResult(
                 path: path,
                 invalidHeaderValues: false,
-                isMHFrameCountCorrect: true,
-                isLastFrameCorrupt: false,
+                isFileHeaderFrameCountCorrect: true,
+                isLastFrameCorrupted: false,
                 isLastFramePartial: false,
                 isFileEmpty: false,
                 calculatedFrameCount: 1);

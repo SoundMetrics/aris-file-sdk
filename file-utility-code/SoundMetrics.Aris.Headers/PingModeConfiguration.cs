@@ -14,7 +14,7 @@ namespace SoundMetrics.Aris.Headers
     using BeamCount = UInt32;
     using ConfigMap = Dictionary<UInt32, UInt32>;
 
-    public static class PingModeConfiguration
+    internal static class PingModeConfiguration
     {
         public static BeamCount GetBeamCount(PingMode pingMode)
         {

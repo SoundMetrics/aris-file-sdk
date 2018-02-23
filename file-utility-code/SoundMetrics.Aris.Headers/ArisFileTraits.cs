@@ -11,10 +11,24 @@ namespace SoundMetrics.Aris.Headers
     using static ArisFileIO;
     using static MatchResult;
 
-    public enum FileVersion { Ddf3 = 3, Ddf4 = 4, Aris5 = 5,
-                              Min = 3, Max = 5 };
+    /// <summary>
+    /// Indicates the version of a file. This is used internally to the file utility code,
+    /// it is not a value that appears in a file.
+    /// </summary>
+    public enum FileVersion {
+        /// <summary>DIDSON v3.</summary>
+        Ddf3 = 3,
+        /// <summary>DIDSON v4.</summary>
+        Ddf4 = 4,
+        /// <summary>ARIS file format.</summary>
+        Aris5 = 5,
+        /// <summary>The minimum valid format in this enumeration.</summary>
+        Min = 3,
+        /// <summary>The maximum valid format in this enumeration.</summary>
+        Max = 5
+    };
 
-    public static class DidsonV3
+    internal static class DidsonV3
     {
         public const uint FileHeaderSize = 512;
         public const uint FrameHeaderSize = 256;
@@ -22,7 +36,7 @@ namespace SoundMetrics.Aris.Headers
         public const uint FileSignature = 0x03464444u;
     }
 
-    public static class DidsonV4
+    internal static class DidsonV4
     {
         public const uint FileHeaderSize = 1024;
         public const uint FrameHeaderSize = 1024;
@@ -35,15 +49,34 @@ namespace SoundMetrics.Aris.Headers
     /// </summary>
     public struct FileTraits
     {
+        /// <summary>The signature found in the file header.</summary>
         public UInt32 FileSignature { get; private set; }
+
+        /// <summary>The version used internally for logic.</summary>
         public FileVersion FileVersion { get; private set; }
+
+        /// <summary>Number of beams in the file.</summary>
         public UInt32 BeamCount { get; private set; }
+
+        /// <summary>Initial sample count of the file.</summary>
         public UInt32 SampleCount { get; private set; }
+
+        /// <summary>The size of the file header.</summary>
         public UInt32 FileHeaderSize { get; private set; }
+
+        /// <summary>The size of the frame header.</summary>
         public UInt32 FrameHeaderSize { get; private set; }
+
+        /// <summary>The size of the sample data in each frame.</summary>
         public UInt32 FrameDataSize { get; private set; }
+
+        /// <summary>The size of the frame including the frame header.</summary>
         public UInt32 FrameSize { get; private set; }
+
+        /// <summary>The calculated frame count; this may not be integral in damaged files.</summary>
         public double CalculatedFrameCount { get; private set; }
+
+        /// <summary>The frame count found in the file header; this may not be correct in damaged files.</summary>
         public UInt32 FileHeaderFrameCount { get; private set; }
 
         internal FileTraits(
@@ -73,6 +106,11 @@ namespace SoundMetrics.Aris.Headers
             FileHeaderFrameCount = fileHeaderFrameCount;
         }
 
+        /// <summary>
+        /// Retrieves the streams traits.
+        /// </summary>
+        /// <param name="stream">The stream opened on an ARIS recording.</param>
+        /// <returns>A Result indicating success or failure.</returns>
         public static Result<FileTraits, ErrorInfo> DetermineFileTraits(Stream stream)
         {
             CheckNotNull(stream, nameof(stream));
@@ -81,6 +119,12 @@ namespace SoundMetrics.Aris.Headers
             return Implementation.DetermineFileTraits(stream);
         }
 
+        /// <summary>
+        /// Creates the file signature, sample count, and beam count from header values in
+        /// the files first frame. Useful for files that have a damaged file header.
+        /// </summary>
+        /// <param name="stream">The stream opened on an ARIS recording.</param>
+        /// <returns>A Result indicating success or failure.</returns>
         public static Result<(uint fileSignature, uint sampleCount, uint beamCount), ErrorInfo>
             CreateArisFileHeaderValuesFromFirstFrame(Stream stream)
         {
@@ -94,6 +138,8 @@ namespace SoundMetrics.Aris.Headers
         {
             public static Result<FileTraits, ErrorInfo> DetermineFileTraits(Stream stream)
             {
+                stream.Position = 0L;
+
                 var fields =
                     ReadUInt32(ArisFileHeaderOffsets.Version, stream)
                         .Bind(fileSignature =>
@@ -183,6 +229,8 @@ namespace SoundMetrics.Aris.Headers
                 CreateArisFileHeaderValuesFromFirstFrame(Stream stream)
             {
                 var fileHeaderSize = Marshal.SizeOf<ArisFileHeader>();
+
+                stream.Position = 0L;
 
                 var fields =
                     ReadUInt32(fileHeaderSize + ArisFrameHeaderOffsets.Version, stream)

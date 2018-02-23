@@ -4,13 +4,16 @@ namespace SoundMetrics.Aris.Headers
 {
     using static ArgChecks;
 
+    /// <summary>
+    /// Results of examing an ARIS recording for problems.
+    /// </summary>
     public struct FileCheckResult
     {
         internal FileCheckResult(
             string path,
             bool invalidHeaderValues,
-            bool isMHFrameCountCorrect,
-            bool isLastFrameCorrupt,
+            bool isFileHeaderFrameCountCorrect,
+            bool isLastFrameCorrupted,
             bool isLastFramePartial,
             bool isFileEmpty,
             double calculatedFrameCount)
@@ -20,19 +23,33 @@ namespace SoundMetrics.Aris.Headers
 
             Path = path;
             InvalidHeaderValues = invalidHeaderValues;
-            IsMHFrameCountCorrect = isMHFrameCountCorrect;
-            IsLastFrameCorrupt = isLastFrameCorrupt;
+            IsFileHeaderFrameCountCorrect = isFileHeaderFrameCountCorrect;
+            IsLastFrameCorrupted = isLastFrameCorrupted;
             IsLastFramePartial = isLastFramePartial;
             IsFileEmpty = isFileEmpty;
             CalculatedFrameCount = calculatedFrameCount;
         }
 
+        /// <summary>The path of the ARIS recording checked.</summary>
         public string Path { get; private set; }
+
+        /// <summary>Indicates whether the file has file header problems.</summary>
         public bool InvalidHeaderValues { get; private set; }
-        public bool IsMHFrameCountCorrect { get; private set; }
-        public bool IsLastFrameCorrupt { get; private set; }
+
+        /// <summary>Indicates whether the file header frame count is correct.</summary>
+        public bool IsFileHeaderFrameCountCorrect { get; private set; }
+
+        /// <summary>Indicates whether the header of the last frame of the file is corrupted.</summary>
+        public bool IsLastFrameCorrupted { get; private set; }
+
+        /// <summary>Indicates whether the last frame is partial.</summary>
         public bool IsLastFramePartial { get; private set; }
+
+        /// <summary>Indicates whether the file is empty (no frames).</summary>
         public bool IsFileEmpty { get; private set; }
+
+        /// <summary>A calculation of how many frames are in the file; this may be
+        /// non-integral for damaged (truncated) files.</summary>
         public double CalculatedFrameCount { get; private set; }
     }
 }
