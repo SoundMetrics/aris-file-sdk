@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Headers", "SoundMetrics.Aris.Headers\SoundMetrics.Aris.Headers.csproj", "{D681A885-4955-420E-94B9-5F3613549D75}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Headers.UT", "SoundMetrics.Aris.Headers.UT\SoundMetrics.Aris.Headers.UT.csproj", "{F36E71DA-0B04-4360-AF8A-1A7CC550DAB0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Headers.Tests", "SoundMetrics.Aris.Headers.Tests\SoundMetrics.Aris.Headers.Tests.csproj", "{347F2185-F4B6-4978-B59E-BD897ECFCF99}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{D681A885-4955-420E-94B9-5F3613549D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D681A885-4955-420E-94B9-5F3613549D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D681A885-4955-420E-94B9-5F3613549D75}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F36E71DA-0B04-4360-AF8A-1A7CC550DAB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F36E71DA-0B04-4360-AF8A-1A7CC550DAB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F36E71DA-0B04-4360-AF8A-1A7CC550DAB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F36E71DA-0B04-4360-AF8A-1A7CC550DAB0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{347F2185-F4B6-4978-B59E-BD897ECFCF99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{347F2185-F4B6-4978-B59E-BD897ECFCF99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{347F2185-F4B6-4978-B59E-BD897ECFCF99}.Release|Any CPU.ActiveCfg = Release|Any CPU
