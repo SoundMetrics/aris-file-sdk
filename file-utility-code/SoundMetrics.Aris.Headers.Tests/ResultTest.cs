@@ -35,5 +35,14 @@ namespace SoundMetrics.Aris.Headers.Tests
             Assert.IsFalse(object.ReferenceEquals(s1, s2));
             Assert.AreEqual(r1, r2);
         }
+
+        [TestMethod]
+        public void Result_VerifyNonEqualityOnSameType()
+        {
+            // Using the same type for T and TError.
+            var q1 = Result<string, string>.Ok("hi");
+            var q2 = Result<string, string>.Error("hi");
+            Assert.AreNotEqual<Result<string, string>>(q1, q2);
+        }
     }
 }
