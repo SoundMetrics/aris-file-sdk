@@ -56,6 +56,11 @@ let produce filename (output : TextWriter) (_modifier : string) (indent : Indent
             "THIS IS GENERATED WITH GenerateHeader, DO NOT MODIFY"
         output.WriteLine()
 
+        writePrefixedWrappedLines output indent CommentStart
+            "Disable CS1591 so we don't get a huge number of xmldoc warnings in projects that use it."
+        output.WriteLine("#pragma warning disable CS1591")
+        output.WriteLine()
+
         indent
 
     | FileEnd _ -> noop
