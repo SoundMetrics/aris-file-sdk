@@ -100,43 +100,7 @@ namespace SoundMetrics.Aris.Headers.Tests
         [TestMethod]
         public void CheckFileForProblems_ValidFileHdrPartialFrame()
         {
-            string path;
-
-            var beamCount = 128u;
-            var sampleCount = 200;
-            var sampleDataSize = beamCount * sampleCount;
-            var frameSize = Marshal.SizeOf<ArisFrameHeader>() + sampleDataSize;
-
-            using (var stream = CreateFauxStream(
-                ArisFileHeader.ArisFileSignature,
-                fileFrameCount: 1,
-                pingMode: 9,
-                beamCount: 128,
-                sampleCount: 200,
-                framesToAdd:1))
-            {
-                Stream fileStream;
-                (fileStream, path) = CreateTestFile();
-                using (var file = fileStream)
-                {
-                    stream.Position = 0;
-                    stream.CopyTo(file);
-
-                    // There's one frame, truncate after its first byte
-                    var startOfFrame = file.Length - frameSize;
-                    var truncatePosition = startOfFrame + 1;
-                    file.SetLength(truncatePosition);
-                }
-            }
-
-            var expected = new FileCheckResult(
-                path: path,
-                invalidHeaderValues: false,
-                isFileHeaderFrameCountCorrect: false,
-                isLastFrameCorrupted: true,
-                isLastFramePartial: true,
-                isFileEmpty: true,
-                calculatedFrameCount: 1.0 / frameSize);
+            var (path, expected) = CreateFileWithPartialFrame(fullFrameCount: 0);
 
             Match(CheckFileForProblems(path),
                 onOk: actual => {
@@ -190,6 +154,63 @@ namespace SoundMetrics.Aris.Headers.Tests
                     Assert.AreEqual(expected, actual);
                 },
                 onError: errorInfo => Assert.Fail(errorInfo.Text));
+        }
+
+        [TestMethod]
+        public void CheckFileForProblems_ValidFileHdrOneFullOnePartialFrame()
+        {
+            var (path, expected) = CreateFileWithPartialFrame(fullFrameCount: 1);
+
+            Match(CheckFileForProblems(path),
+                onOk: actual => {
+                    Console.WriteLine("Expected: " + Describe(expected));
+                    Console.WriteLine("Actual: " + Describe(actual));
+                    Assert.AreEqual(expected, actual);
+                },
+                onError: errorInfo => Assert.Fail(errorInfo.Text));
+        }
+
+        private static (string path, FileCheckResult expected) CreateFileWithPartialFrame(uint fullFrameCount)
+        {
+            string path;
+
+            var beamCount = 128u;
+            var sampleCount = 200;
+            var sampleDataSize = beamCount * sampleCount;
+            var frameSize = Marshal.SizeOf<ArisFrameHeader>() + sampleDataSize;
+
+            using (var stream = CreateFauxStream(
+                ArisFileHeader.ArisFileSignature,
+                fileFrameCount: fullFrameCount + 1,
+                pingMode: 9,
+                beamCount: 128,
+                sampleCount: 200,
+                framesToAdd: fullFrameCount + 1))
+            {
+                Stream fileStream;
+                (fileStream, path) = CreateTestFile();
+                using (var file = fileStream)
+                {
+                    stream.Position = 0;
+                    stream.CopyTo(file);
+
+                    // There's one frame, truncate after its first byte
+                    var startOfFrame = file.Length - frameSize;
+                    var truncatePosition = startOfFrame + 1;
+                    file.SetLength(truncatePosition);
+                }
+            }
+
+            var expected = new FileCheckResult(
+                path: path,
+                invalidHeaderValues: false,
+                isFileHeaderFrameCountCorrect: false,
+                isLastFrameCorrupted: true,
+                isLastFramePartial: true,
+                isFileEmpty: fullFrameCount < 1,
+                calculatedFrameCount: fullFrameCount + (1.0 / frameSize));
+
+            return (path, expected);
         }
     }
 }

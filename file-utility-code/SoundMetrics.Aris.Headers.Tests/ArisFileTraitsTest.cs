@@ -79,7 +79,8 @@ namespace SoundMetrics.Aris.Headers.Tests
                     frameDataSize: beams * samples,
                     frameSize: (uint)Marshal.SizeOf<ArisFrameHeader>() + (beams * samples),
                     calculatedFrameCount: 0,
-                    fileHeaderFrameCount: 1);
+                    fileHeaderFrameCount: 1,
+                    fileSize: stream.Length);
 
                 Match(FileTraits.DetermineFileTraits(stream),
                     onOk: actual => {
@@ -113,7 +114,8 @@ namespace SoundMetrics.Aris.Headers.Tests
                     frameDataSize: beams * samples,
                     frameSize: (uint)Marshal.SizeOf<ArisFrameHeader>() + (beams * samples),
                     calculatedFrameCount: 1,
-                    fileHeaderFrameCount: 0);
+                    fileHeaderFrameCount: 0,
+                    fileSize: stream.Length);
 
                 Match(FileTraits.DetermineFileTraits(stream),
                     onOk: actual => {

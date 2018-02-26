@@ -79,6 +79,9 @@ namespace SoundMetrics.Aris.Headers
         /// <summary>The frame count found in the file header; this may not be correct in damaged files.</summary>
         public UInt32 FileHeaderFrameCount { get; private set; }
 
+        /// <summary>The size of the file.</summary>
+        public long FileSize { get; private set; }
+
         internal FileTraits(
             UInt32 fileSignature,
             FileVersion fileVersion,
@@ -89,7 +92,8 @@ namespace SoundMetrics.Aris.Headers
             UInt32 frameDataSize,
             UInt32 frameSize,
             double calculatedFrameCount,
-            UInt32 fileHeaderFrameCount)
+            UInt32 fileHeaderFrameCount,
+            long fileSize)
         {
             CheckEnumMember(fileVersion, nameof(fileVersion));
             CheckMin(calculatedFrameCount, 0, nameof(calculatedFrameCount));
@@ -104,6 +108,7 @@ namespace SoundMetrics.Aris.Headers
             FrameSize = frameSize;
             CalculatedFrameCount = calculatedFrameCount;
             FileHeaderFrameCount = fileHeaderFrameCount;
+            FileSize = fileSize;
         }
 
         /// <summary>
@@ -177,7 +182,8 @@ namespace SoundMetrics.Aris.Headers
                             frameDataSize,
                             frameSize,
                             calculatedFrameCount: ((double)stream.Length - traits.FileHeaderSize) / (double)frameSize,
-                            fileHeaderFrameCount: frameCount));
+                            fileHeaderFrameCount: frameCount,
+                            fileSize: stream.Length));
                     },
                     onError: errorInfo => Result<FileTraits, ErrorInfo>.Error(
                                 errorInfo.Append("Couldn't load fields to determine file traits")));

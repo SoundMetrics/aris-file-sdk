@@ -1,6 +1,8 @@
 ﻿// Copyright 2015-2018 Sound Metrics Corp. All Rights Reserved.
 
 using Aris.FileTypes;
+using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace SoundMetrics.Aris.Headers
@@ -32,20 +34,39 @@ namespace SoundMetrics.Aris.Headers
                             {
                                 // Not frames at all, let's not call that corrupt.
                                 isCorrupt = Result<bool, ErrorInfo>.Ok(false);
+                                WriteDebugConsole($"$$$ count=[{count}], not corrupt");
                             }
                             else if (count < 1.0)
                             {
                                 isCorrupt = Result<bool, ErrorInfo>.Ok(true);
+                                WriteDebugConsole($"$$$ count=[{count}], corrupt");
                             }
                             else
                             {
-                                var fi = (uint)(Floor(count)) - 1;
-                                var frameOffset = CalculateFrameOffset(fi, traits);
+                                var fiLastFullFrame = (uint)(Floor(count)) - 1;
+                                var hasPartialFrame = count != fiLastFullFrame + 1;
+                                var offsetAdjust = hasPartialFrame ? 1u : 0u;
+                                var frameOffset = CalculateFrameOffset(fiLastFullFrame + offsetAdjust, traits);
 
                                 isCorrupt =
                                     Match(ReadUInt32(frameOffset + ArisFrameHeaderOffsets.Version, stream),
-                                        onOk: version => Result<bool, ErrorInfo>.Ok(traits.FileSignature != version),
-                                        onError: errorInfo => Result<bool, ErrorInfo>.Ok(true));
+                                        onOk: version => {
+                                            var sizeOfLastFrame = traits.FileSize - frameOffset;
+                                            var expectedFrameSize = traits.FrameSize;
+                                            var corrupt =
+                                                traits.FileSignature != version
+                                                    || sizeOfLastFrame < expectedFrameSize;
+                                            WriteDebugConsole($"sizeOfLastFrame=[{sizeOfLastFrame}]");
+                                            WriteDebugConsole($"expectedFrameSize=[{expectedFrameSize}]");
+                                            WriteDebugConsole("traits.FileSignature != version=" + (traits.FileSignature != version));
+                                            WriteDebugConsole("sizeOfLastFrame < expectedFrameSize=" + (sizeOfLastFrame < expectedFrameSize));
+                                            WriteDebugConsole($"count=[{count}]; isCorrupt={corrupt}");
+                                            return Result<bool, ErrorInfo>.Ok(corrupt);
+                                        },
+                                        onError: errorInfo => {
+                                            WriteDebugConsole($"$count=[{count}]; couldn't read version, corrupt");
+                                            return Result<bool, ErrorInfo>.Ok(true);
+                                        });
                             }
 
                             return isCorrupt;
@@ -178,6 +199,13 @@ namespace SoundMetrics.Aris.Headers
             {
                 WriteUInt32(ArisFileHeaderOffsets.FrameCount, stream, frameCount);
                 Serilog.Log.Information("Set file header frame count to {frameCount}", frameCount);
+            }
+
+            // This is used for debugging work in test development.
+            [Conditional("DEBUG")]
+            private static void WriteDebugConsole(string s)
+            {
+                Console.WriteLine(s);
             }
         }
     }
