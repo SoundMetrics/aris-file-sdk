@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Headers",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Files", "SoundMetrics.Aris.Files\SoundMetrics.Aris.Files.csproj", "{AA0D17C8-9523-434B-854D-8EB642D6A173}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Headers.Tests", "SoundMetrics.Aris.Files.Tests\SoundMetrics.Aris.Headers.Tests.csproj", "{1661BA98-015B-426D-A34E-A653A00BCF45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Files.Tests", "SoundMetrics.Aris.Files.Tests\SoundMetrics.Aris.Files.Tests.csproj", "{1661BA98-015B-426D-A34E-A653A00BCF45}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B1CCFC69-85D2-4815-940B-0F97F65E36D3}"
 	ProjectSection(SolutionItems) = preProject
