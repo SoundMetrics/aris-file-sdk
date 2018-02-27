@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Headers", "SoundMetrics.Aris.Headers\SoundMetrics.Aris.Headers.csproj", "{D681A885-4955-420E-94B9-5F3613549D75}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Headers.Tests", "SoundMetrics.Aris.Headers.Tests\SoundMetrics.Aris.Headers.Tests.csproj", "{347F2185-F4B6-4978-B59E-BD897ECFCF99}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Files", "SoundMetrics.Aris.Files\SoundMetrics.Aris.Files.csproj", "{AA0D17C8-9523-434B-854D-8EB642D6A173}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Headers.Tests", "SoundMetrics.Aris.Files.Tests\SoundMetrics.Aris.Headers.Tests.csproj", "{1661BA98-015B-426D-A34E-A653A00BCF45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{D681A885-4955-420E-94B9-5F3613549D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D681A885-4955-420E-94B9-5F3613549D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D681A885-4955-420E-94B9-5F3613549D75}.Release|Any CPU.Build.0 = Release|Any CPU
-		{347F2185-F4B6-4978-B59E-BD897ECFCF99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{347F2185-F4B6-4978-B59E-BD897ECFCF99}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{347F2185-F4B6-4978-B59E-BD897ECFCF99}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{347F2185-F4B6-4978-B59E-BD897ECFCF99}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AA0D17C8-9523-434B-854D-8EB642D6A173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AA0D17C8-9523-434B-854D-8EB642D6A173}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA0D17C8-9523-434B-854D-8EB642D6A173}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA0D17C8-9523-434B-854D-8EB642D6A173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1661BA98-015B-426D-A34E-A653A00BCF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1661BA98-015B-426D-A34E-A653A00BCF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1661BA98-015B-426D-A34E-A653A00BCF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1661BA98-015B-426D-A34E-A653A00BCF45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
