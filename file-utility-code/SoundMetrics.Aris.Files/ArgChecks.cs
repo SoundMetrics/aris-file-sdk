@@ -2,7 +2,7 @@
 
 using System;
 
-namespace SoundMetrics.Aris.Headers
+namespace SoundMetrics.Aris.Files
 {
     internal static class ArgChecks
     {

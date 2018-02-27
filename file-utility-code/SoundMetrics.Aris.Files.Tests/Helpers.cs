@@ -4,7 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace SoundMetrics.Aris.Headers.Tests
+namespace SoundMetrics.Aris.Files.Tests
 {
     using System;
     using static MatchResult;

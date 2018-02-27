@@ -1,7 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SoundMetrics.Aris.Headers.Tests
+namespace SoundMetrics.Aris.Files.Tests
 {
     [TestClass]
     public class ArgChecksTest

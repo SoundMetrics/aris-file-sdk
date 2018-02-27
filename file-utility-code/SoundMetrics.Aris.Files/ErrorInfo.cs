@@ -3,7 +3,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace SoundMetrics.Aris.Headers
+namespace SoundMetrics.Aris.Files
 {
     /// <summary>
     /// Provides a means of return error information to a caller.

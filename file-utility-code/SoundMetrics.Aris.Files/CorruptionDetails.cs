@@ -5,7 +5,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace SoundMetrics.Aris.Headers
+namespace SoundMetrics.Aris.Files
 {
     using static ArisFileIO;
     using static MatchResult;

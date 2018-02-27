@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SoundMetrics.Aris.Headers.Tests
+namespace SoundMetrics.Aris.Files.Tests
 {
     using global::Aris.FileTypes;
     using System;

@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SoundMetrics.Aris.Headers.Tests
+namespace SoundMetrics.Aris.Files.Tests
 {
     using static ArisFileIO;
     using static Helpers;

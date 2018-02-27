@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SoundMetrics.Aris.Headers
+namespace SoundMetrics.Aris.Files
 {
     // The generated header files are off in a different namespace.
     // We'll leave it that way for now, in deference to anyone who might be using them.

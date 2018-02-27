@@ -1,7 +1,7 @@
 ﻿using Serilog;
 using System;
 
-namespace SoundMetrics.Aris.Headers.Tests
+namespace SoundMetrics.Aris.Files.Tests
 {
     public static class LoggingConfiguration
     {

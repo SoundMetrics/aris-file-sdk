@@ -3,7 +3,7 @@
 using System;
 using System.IO;
 
-namespace SoundMetrics.Aris.Headers
+namespace SoundMetrics.Aris.Files
 {
     using global::Aris.FileTypes;
     using static ArgChecks;

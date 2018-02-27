@@ -2,4 +2,4 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("SoundMetrics.Aris.Headers.Tests")]
+[assembly: InternalsVisibleTo("SoundMetrics.Aris.Files.Tests")]

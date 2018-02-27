@@ -1,6 +1,6 @@
 ﻿// Copyright 2015-2018 Sound Metrics Corp. All Rights Reserved.
 
-namespace SoundMetrics.Aris.Headers
+namespace SoundMetrics.Aris.Files
 {
     using static ArgChecks;
 
