@@ -1,5 +1,7 @@
 // FileHeader.h
 
+// THIS IS GENERATED WITH GenerateHeader, DO NOT MODIFY
+
 #ifndef ARIS_ARISFILEHEADER_H
 #define ARIS_ARISFILEHEADER_H
 

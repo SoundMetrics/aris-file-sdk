@@ -1,5 +1,10 @@
 // FileHeader.cs
 
+// THIS IS GENERATED WITH GenerateHeader, DO NOT MODIFY
+
+// Disable CS1591 so we don't get a huge number of xmldoc warnings in projects that use it.
+#pragma warning disable CS1591
+
 namespace Aris.FileTypes
 {
     
@@ -10,8 +15,8 @@ namespace Aris.FileTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
     public struct ArisFileHeader
     {
-        public static int ArisFileSignature =  0x05464444;
-        public static int ArisFrameSignature = 0x05464444;
+        public const uint ArisFileSignature =  0x05464444;
+        public const uint ArisFrameSignature = 0x05464444;
 
         // File format version DDF_05 = 0x05464444
         public UInt32 Version;

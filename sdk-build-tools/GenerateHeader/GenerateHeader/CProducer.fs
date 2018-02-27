@@ -33,6 +33,10 @@ let produce filename (output : TextWriter) (modifier : string) (indent : Indent)
             writePrefixedWrappedLines output indent CommentStart filename
             output.WriteLine()
 
+            writePrefixedWrappedLines output indent CommentStart
+                "THIS IS GENERATED WITH GenerateHeader, DO NOT MODIFY"
+            output.WriteLine()
+
         indent
 
     | FileEnd _ -> noop

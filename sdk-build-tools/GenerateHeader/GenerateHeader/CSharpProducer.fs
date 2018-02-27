@@ -52,6 +52,15 @@ let produce filename (output : TextWriter) (_modifier : string) (indent : Indent
         writePrefixedWrappedLines output indent CommentStart filename
         output.WriteLine()
 
+        writePrefixedWrappedLines output indent CommentStart
+            "THIS IS GENERATED WITH GenerateHeader, DO NOT MODIFY"
+        output.WriteLine()
+
+        writePrefixedWrappedLines output indent CommentStart
+            "Disable CS1591 so we don't get a huge number of xmldoc warnings in projects that use it."
+        output.WriteLine("#pragma warning disable CS1591")
+        output.WriteLine()
+
         indent
 
     | FileEnd _ -> noop
@@ -90,8 +99,8 @@ let produce filename (output : TextWriter) (_modifier : string) (indent : Indent
         writeUnbrokenLine output indent (sprintf "public struct %s" typeInfo.typeName)
         writeUnbrokenLine output indent "{"
 
-        writeUnbrokenLine output (indent.Indent()) "public static int ArisFileSignature =  0x05464444;"
-        writeUnbrokenLine output (indent.Indent()) "public static int ArisFrameSignature = 0x05464444;"
+        writeUnbrokenLine output (indent.Indent()) "public const uint ArisFileSignature =  0x05464444;"
+        writeUnbrokenLine output (indent.Indent()) "public const uint ArisFrameSignature = 0x05464444;"
         output.WriteLine()
 
         indent

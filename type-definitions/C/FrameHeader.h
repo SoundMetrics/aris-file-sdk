@@ -1,5 +1,7 @@
 // FrameHeader.h
 
+// THIS IS GENERATED WITH GenerateHeader, DO NOT MODIFY
+
 #ifndef ARIS_ARISFRAMEHEADER_H
 #define ARIS_ARISFRAMEHEADER_H
 
