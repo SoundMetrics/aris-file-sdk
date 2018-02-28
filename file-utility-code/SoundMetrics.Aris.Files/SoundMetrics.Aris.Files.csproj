@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.0-dev</Version>
+    <Version>2.0.0-alpha</Version>
     <Company>Sound Metrics Corporation</Company>
     <Product>ARIS File SDK</Product>
     <Description>Utility code for checking ARIS files.</Description>
