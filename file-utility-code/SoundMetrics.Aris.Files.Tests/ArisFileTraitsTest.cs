@@ -82,7 +82,7 @@ namespace SoundMetrics.Aris.Files.Tests
                     fileHeaderFrameCount: 1,
                     fileSize: stream.Length);
 
-                Match(FileTraits.DetermineFileTraits(stream),
+                MatchVoid(FileTraits.DetermineFileTraits(stream),
                     onOk: actual => {
                         Console.WriteLine("Expected: " + Describe(expected));
                         Console.WriteLine("Actual: " + Describe(actual));
@@ -117,7 +117,7 @@ namespace SoundMetrics.Aris.Files.Tests
                     fileHeaderFrameCount: 0,
                     fileSize: stream.Length);
 
-                Match(FileTraits.DetermineFileTraits(stream),
+                MatchVoid(FileTraits.DetermineFileTraits(stream),
                     onOk: actual => {
                         Console.WriteLine("Expected: " + Describe(expected));
                         Console.WriteLine("Actual: " + Describe(actual));
@@ -160,7 +160,7 @@ namespace SoundMetrics.Aris.Files.Tests
             var framesToAdd = 1u;
             using (var stream = CreateFauxStream(sig, fileFrameCount, pingMode, beams, samples, framesToAdd))
             {
-                Match(FileTraits.CreateArisFileHeaderValuesFromFirstFrame(stream),
+                MatchVoid(FileTraits.CreateArisFileHeaderValuesFromFirstFrame(stream),
                     onOk: actual => {
                         var (fileVersion, sampleCount, beamCount) = actual;
                         Assert.AreEqual(sig, fileVersion);

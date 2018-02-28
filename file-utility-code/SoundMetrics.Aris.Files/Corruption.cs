@@ -30,6 +30,16 @@ namespace SoundMetrics.Aris.Files
             }
         }
 
+        /// <summary>Indicates whether the user wishes to fix the file.</summary>
+        public enum ConsentResponse
+        {
+            /// <summary>Indicates the user wishes to fix the file.</summary>
+            PleaseFix,
+
+            /// <summary>Indicates the user does not wish to fix the file.</summary>
+            PleaseDont,
+        };
+
         /// <summary>
         /// Defines the signature of the confirmation function used when truncating
         /// damaged files.
@@ -37,7 +47,7 @@ namespace SoundMetrics.Aris.Files
         /// <param name="newFrameCount">The number of frames after truncation.</param>
         /// <param name="oldFrameCount">The number of frames after truncation.</param>
         /// <returns>True, if the caller consents to truncating the file.</returns>
-        public delegate bool ConfirmTruncationFn(uint newFrameCount, uint oldFrameCount);
+        public delegate ConsentResponse ConfirmTruncationFn(uint newFrameCount, uint oldFrameCount);
 
         /// <summary>
         /// Corrects known problems in an ARIS recording.

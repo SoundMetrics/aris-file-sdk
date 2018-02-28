@@ -51,5 +51,15 @@ namespace SoundMetrics.Aris.Files
         /// <summary>A calculation of how many frames are in the file; this may be
         /// non-integral for damaged (truncated) files.</summary>
         public double CalculatedFrameCount { get; private set; }
+
+        /// <summary>Indicates whether any corruption was detected.</summary>
+        public bool IsCorruptionDetected
+        {
+            get
+            {
+                return InvalidHeaderValues || !IsFileHeaderFrameCountCorrect
+                        || IsLastFrameCorrupted || IsLastFramePartial || IsFileEmpty;
+            }
+        }
     }
 }
