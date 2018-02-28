@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.0-alpha</Version>
     <Authors />
     <Company>Sound Metrics Corporation</Company>
     <Copyright>Copyright (c) 2015-2018 Sound Metrics Corporation</Copyright>
@@ -11,7 +10,7 @@
     <PackageProjectUrl>https://github.com/SoundMetrics/aris-file-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SoundMetrics/aris-file-sdk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Description>Headers for ARIS recordings.</Description>
     <AssemblyName>SoundMetrics.Aris.Headers</AssemblyName>
   </PropertyGroup>

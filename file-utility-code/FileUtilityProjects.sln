@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.Files.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B1CCFC69-85D2-4815-940B-0F97F65E36D3}"
 	ProjectSection(SolutionItems) = preProject
+		build-packages.cmd = build-packages.cmd
 		README.md = README.md
+		ver.file-utility-code.txt = ver.file-utility-code.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckArisFile.Core", "CheckArisFile.Core\CheckArisFile.Core.csproj", "{F963DD14-3680-42D7-BDE7-9A468A0A4C7E}"
