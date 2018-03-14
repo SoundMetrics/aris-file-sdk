@@ -10,9 +10,10 @@
     <PackageProjectUrl>https://github.com/SoundMetrics/aris-file-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SoundMetrics/aris-file-sdk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Headers for ARIS recordings.</Description>
     <AssemblyName>SoundMetrics.Aris.Headers</AssemblyName>
+    <Version>1.0.0-beta</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
