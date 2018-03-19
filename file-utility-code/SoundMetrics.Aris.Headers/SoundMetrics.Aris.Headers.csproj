@@ -37,8 +37,4 @@
     <Compile Include="..\..\type-definitions\CSharp\FrameHeader.cs" Link="FrameHeader.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Serilog" Version="2.6.0" />
-  </ItemGroup>
-
 </Project>
