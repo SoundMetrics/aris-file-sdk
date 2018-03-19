@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors />
+    <Authors>Sound Metrics Corporation</Authors>
     <Company>Sound Metrics Corporation</Company>
     <Copyright>Copyright (c) 2015-2018 Sound Metrics Corporation</Copyright>
     <Product>ARIS File SDK</Product>
