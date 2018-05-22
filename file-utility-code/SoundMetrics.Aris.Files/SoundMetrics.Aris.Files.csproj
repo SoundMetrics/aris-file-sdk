@@ -11,8 +11,10 @@
     <RepositoryUrl>https://github.com/SoundMetrics/aris-file-sdk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0-beta</Version>
+    <Version>1.0.1-beta</Version>
     <Authors>Sound Metrics Corporation</Authors>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
