@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,7 +6,7 @@
     <Company>Sound Metrics Corporation</Company>
     <Copyright>Copyright (c) 2015-2018 Sound Metrics Corporation</Copyright>
     <Product>ARIS File SDK</Product>
-    <PackageLicenseUrl>https://github.com/SoundMetrics/aris-file-sdk/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/SoundMetrics/aris-file-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SoundMetrics/aris-file-sdk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
