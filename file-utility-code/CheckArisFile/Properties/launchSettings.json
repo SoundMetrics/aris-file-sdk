@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CheckArisFile": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\Public\\Documents\\SoundMetrics\\ARIS_2018_02_14\\2018-02-14_091500.aris\""
+    }
+  }
+}

@@ -17,9 +17,9 @@ namespace SoundMetrics.Aris.Files
         /// <summary>
         /// Easily accessible alias for Result.Match. This form does not return a value.
         /// </summary>
-        public static void Match<T, TError>(
+        public static void MatchVoid<T, TError>(
             Result<T, TError> result, Action<T> onOk, Action<TError> onError) =>
-                Result<T, TError>.Match(result, onOk, onError);
+                Result<T, TError>.MatchVoid(result, onOk, onError);
 
         /// <summary>
         /// Easily accessible alias for Result.Match. This form returns a value.
@@ -61,7 +61,7 @@ namespace SoundMetrics.Aris.Files
         /// <param name="result">The Result instance to be examined.</param>
         /// <param name="onOk">The callback invoked when the result value is Ok.</param>
         /// <param name="onError">The callback invoked when the result value is Error.</param>
-        public static void Match(
+        public static void MatchVoid(
             Result<T, TError> result, Action<T> onOk, Action<TError> onError)
         {
             CheckNotNull(onOk, nameof(onOk));

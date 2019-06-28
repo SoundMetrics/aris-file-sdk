@@ -1,17 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.0-dev</Version>
     <Company>Sound Metrics Corporation</Company>
     <Product>ARIS File SDK</Product>
     <Description>Utility code for checking ARIS files.</Description>
     <Copyright>Copyright (c) 2015-2018 Sound Metrics Corporation</Copyright>
-    <PackageLicenseUrl>https://github.com/SoundMetrics/aris-file-sdk/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/SoundMetrics/aris-file-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SoundMetrics/aris-file-sdk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1-beta</Version>
+    <Authors>Sound Metrics Corporation</Authors>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

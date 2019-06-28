@@ -28,7 +28,6 @@ namespace SoundMetrics.Aris.Files
         public static ErrorInfo Create(string text)
         {
             var sb = new StringBuilder(text);
-            sb.AppendLine(text);
             return new ErrorInfo(sb);
         }
 
@@ -40,7 +39,8 @@ namespace SoundMetrics.Aris.Files
         public ErrorInfo Append(string text)
         {
             var sb = this._builder;
-            sb.AppendLine(text);
+            sb.AppendLine();
+            sb.Append(text);
             return new ErrorInfo(sb);
         }
     }

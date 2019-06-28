@@ -52,7 +52,7 @@ namespace SoundMetrics.Aris.Files.Tests
                 fstream.Write(bytes, 0, bytes.Length);
             }
 
-            Match(CheckFileForProblems(path),
+            MatchVoid(CheckFileForProblems(path),
                 onOk: actual => Assert.Fail("Cannot succeed if we can't verify signature, etc."),
                 onError: msg => Assert.IsTrue(true));
         }
@@ -88,7 +88,7 @@ namespace SoundMetrics.Aris.Files.Tests
                 isFileEmpty: true,
                 calculatedFrameCount: 0);
 
-            Match(CheckFileForProblems(path),
+            MatchVoid(CheckFileForProblems(path),
                 onOk: actual => {
                     Console.WriteLine("Expected: " + Describe(expected));
                     Console.WriteLine("Actual: " + Describe(actual));
@@ -102,7 +102,7 @@ namespace SoundMetrics.Aris.Files.Tests
         {
             var (path, expected) = CreateFileWithPartialFrame(fullFrameCount: 0);
 
-            Match(CheckFileForProblems(path),
+            MatchVoid(CheckFileForProblems(path),
                 onOk: actual => {
                     Console.WriteLine("Expected: " + Describe(expected));
                     Console.WriteLine("Actual: " + Describe(actual));
@@ -147,7 +147,7 @@ namespace SoundMetrics.Aris.Files.Tests
                 isFileEmpty: false,
                 calculatedFrameCount: 1);
 
-            Match(CheckFileForProblems(path),
+            MatchVoid(CheckFileForProblems(path),
                 onOk: actual => {
                     Console.WriteLine("Expected: " + Describe(expected));
                     Console.WriteLine("Actual: " + Describe(actual));
@@ -161,7 +161,7 @@ namespace SoundMetrics.Aris.Files.Tests
         {
             var (path, expected) = CreateFileWithPartialFrame(fullFrameCount: 1);
 
-            Match(CheckFileForProblems(path),
+            MatchVoid(CheckFileForProblems(path),
                 onOk: actual => {
                     Console.WriteLine("Expected: " + Describe(expected));
                     Console.WriteLine("Actual: " + Describe(actual));

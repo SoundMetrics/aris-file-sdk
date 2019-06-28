@@ -144,18 +144,18 @@ namespace SoundMetrics.Aris.Files
                 {
                     var problems = CheckFileForProblems(path, stream);
 
-                    Match(FileTraits.DetermineFileTraits(stream),
+                    MatchVoid(FileTraits.DetermineFileTraits(stream),
                         onOk: traits => {
                             var calculated = (uint)(Floor(traits.CalculatedFrameCount));
 
-                            Match(ReverseCountBadTrailingFrames(stream),
+                            MatchVoid(ReverseCountBadTrailingFrames(stream),
                                 onOk: lengthOfTrailingBadFrames =>
                                 {
                                     var firstBad = lengthOfTrailingBadFrames;
                                     var newFrameCount = calculated - lengthOfTrailingBadFrames;
                                     var oldFrameCount = calculated;
 
-                                    if (confirmTruncation(newFrameCount, oldFrameCount))
+                                    if (confirmTruncation(newFrameCount, oldFrameCount) == ConsentResponse.PleaseFix)
                                     {
                                         TruncateToNFrames(newFrameCount, stream, Path.GetFileName(path));
                                         SetMasterHeaderFrameCount(newFrameCount, stream);
@@ -183,7 +183,7 @@ namespace SoundMetrics.Aris.Files
 
             public static void TruncateToNFrames(uint frameCount, Stream stream, string streamName)
             {
-                Match(FileTraits.DetermineFileTraits(stream),
+                MatchVoid(FileTraits.DetermineFileTraits(stream),
                     onOk: traits => {
                         var fi = Min(frameCount, (uint)Floor(traits.CalculatedFrameCount));
                         var frameOffset = CalculateFrameOffset(fi, traits);
@@ -202,7 +202,7 @@ namespace SoundMetrics.Aris.Files
             }
 
             // This is used for debugging work in test development.
-            [Conditional("DEBUG")]
+            [Conditional("DEBUGCONSOLE")]
             private static void WriteDebugConsole(string s)
             {
                 Console.WriteLine(s);

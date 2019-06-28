@@ -13,7 +13,7 @@ namespace SoundMetrics.Aris.Files.Tests
     {
         public static void AssertIsError<T, TError>(Result<T, TError> result)
         {
-            Match(result,
+            MatchVoid(result,
                 onOk: value => Assert.Fail("Expecgted Error, found Ok(${value})"),
                 onError: e => Assert.IsTrue(true));
         }

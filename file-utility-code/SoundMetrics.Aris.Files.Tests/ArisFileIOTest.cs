@@ -101,7 +101,7 @@ namespace SoundMetrics.Aris.Files.Tests
 
         private static void AssertEqualResult<T, TError>(T expected, Result<T, TError> actual)
         {
-            Match(actual,
+            MatchVoid(actual,
                 onOk: actualValue => Assert.AreEqual<T>(expected, actualValue),
                 onError: msg => Assert.Fail($"Failed to get value: '{msg}'"));
         }
