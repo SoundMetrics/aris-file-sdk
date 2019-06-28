@@ -104,9 +104,12 @@ let evalLine (line: string) =
 
 let run (myArgs: string array) =
 
-    if myArgs.Length <> 2 then
+    let expectedArgs = 2
+    if myArgs.Length <> expectedArgs then
         let scriptName = fsi.CommandLineArgs.[0]
         eprintfn ""
+        eprintfn "ERROR: Expected %d arguments" expectedArgs
+        eprintfn "       Found %d: %A" myArgs.Length myArgs
         eprintfn "USAGE: fsi.exe %s -- <input-path> <output-path>" scriptName
         Environment.Exit(1)
 
