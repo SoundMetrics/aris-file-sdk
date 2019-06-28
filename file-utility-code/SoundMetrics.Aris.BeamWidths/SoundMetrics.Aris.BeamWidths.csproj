@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="generated\" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="for %25%25f in (BeamWidths_ARIS_Telephoto_48 BeamWidths_ARIS_Telephoto_96 BeamWidths_ARIS1800_96 BeamWidths_ARIS1800_1200_48 BeamWidths_ARIS3000_64 BeamWidths_ARIS3000_128) do ^&#xD;&#xA;..\run-fsi &quot;$(ProjectDir)ParseBeamWidthDefs.fsx&quot; ^&#xD;&#xA;    -- ^&#xD;&#xA;    &quot;$(SolutionDir)..\beam-width-metrics\%25%25f.h&quot; ^&#xD;&#xA;    generated\%25%25f.cs&#xD;&#xA;&#xD;&#xA;echo ####&#xD;&#xA;&#xD;&#xA;REM for %25%25f in ( ^&#xD;&#xA;REM     BeamWidths_ARIS_Telephoto_48 ^&#xD;&#xA;REM     ) do ^&#xD;&#xA;REM     ..\run-fsi &quot;$(ProjectDir)ParseBeamWidthDefs.fsx&quot; ^&#xD;&#xA;REM         -- ^&#xD;&#xA;REM         &quot;$(SolutionDir)..\beam-width-metrics\%25%25f.h&quot; ^&#xD;&#xA;REM         generated\%25%25f.cs" />
+  </Target>
+
+</Project>
