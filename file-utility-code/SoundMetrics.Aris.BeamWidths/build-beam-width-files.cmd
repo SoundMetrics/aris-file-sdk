@@ -1,4 +1,4 @@
-﻿SET SOL_DIR=%1
+SET SOL_DIR=%1
 SET ALT_SOL_DIR=..\
 IF "%SOL_DIR%" == "" SET SOL_DIR=%ALT_SOL_DIR%
 IF "%SOL_DIR%" == "*Undefined*" SET SOL_DIR=%ALT_SOL_DIR%
