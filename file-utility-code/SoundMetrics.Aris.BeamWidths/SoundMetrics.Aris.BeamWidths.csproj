@@ -2,10 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId />
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="generated\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SoundMetrics.Aris.AcousticSettings" Version="1.0.47-alpha.538" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

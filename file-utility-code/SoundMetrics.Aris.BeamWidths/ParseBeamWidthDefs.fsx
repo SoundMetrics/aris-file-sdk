@@ -1,4 +1,6 @@
-﻿open System
+﻿// Copyright 2019 Sound Metrics Corp. All Rights Reserved.
+
+open System
 open System.IO
 open System.Text.RegularExpressions
 

@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckArisFile", "CheckArisF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckArisFile.Core.Tests", "CheckArisFile.Core.Tests\CheckArisFile.Core.Tests.csproj", "{E4193153-7155-4D95-82CC-5786B6A55255}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundMetrics.Aris.BeamWidths", "SoundMetrics.Aris.BeamWidths\SoundMetrics.Aris.BeamWidths.csproj", "{FF911F57-C2F7-4411-A728-1F269044F30F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundMetrics.Aris.BeamWidths", "SoundMetrics.Aris.BeamWidths\SoundMetrics.Aris.BeamWidths.csproj", "{FF911F57-C2F7-4411-A728-1F269044F30F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundMetrics.Aris.BeamWidths.Tests", "SoundMetrics.Aris.BeamWidths.Tests\SoundMetrics.Aris.BeamWidths.Tests.csproj", "{B80E9B25-7F4A-4BC5-9DFE-AD0E475AECCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{FF911F57-C2F7-4411-A728-1F269044F30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF911F57-C2F7-4411-A728-1F269044F30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF911F57-C2F7-4411-A728-1F269044F30F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B80E9B25-7F4A-4BC5-9DFE-AD0E475AECCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B80E9B25-7F4A-4BC5-9DFE-AD0E475AECCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B80E9B25-7F4A-4BC5-9DFE-AD0E475AECCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B80E9B25-7F4A-4BC5-9DFE-AD0E475AECCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
