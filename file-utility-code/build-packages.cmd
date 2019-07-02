@@ -18,5 +18,6 @@ ECHO PACKCMD=%PACKCMD%
 
 %PACKCMD% .\SoundMetrics.Aris.Headers\
 %PACKCMD% .\SoundMetrics.Aris.Files\
+%PACKCMD% .\SoundMetrics.Aris.BeamWidths\
 
 ENDLOCAL
