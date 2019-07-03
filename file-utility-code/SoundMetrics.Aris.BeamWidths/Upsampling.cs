@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SoundMetrics.Aris.BeamWidths
 {
-    using UpsampleWidth = Int32;
+    using UpsampleWidth = UInt32;
 
     public static class Upsampling
     {
@@ -25,7 +25,7 @@ namespace SoundMetrics.Aris.BeamWidths
         /// </param>
         /// <returns>An ordered array of upsampel widths.</returns>
         public static UpsampleWidth[] CalculateUpsampleWidths(
-            int scale,
+            UInt32 scale,
             BeamInfo[] metrics,
             bool normalOrdering = true)
         {
@@ -60,19 +60,21 @@ namespace SoundMetrics.Aris.BeamWidths
             // current beam; divide that by the upsampled pixel width to get a pixel count.
             // Subtract previously assigned pixels.Assign the remainder to the current beam.
 
-            var pixelsAssigned = 0;
+            var pixelsAssigned = 0u;
 
             for (var beamNum = 0; beamNum < beamCount; ++beamNum)
             {
+                // This method avoids accumulating floating point error as we
+                // work across the field-of-view.
                 var localRight = metrics[beamNum].Right - leftmostAngle;
-                var allPixelsToLeft = (int)(Math.Round(localRight / upsampledPixelWidth));
+                var allPixelsToLeft = (uint)(Math.Round(localRight / upsampledPixelWidth));
                 var pixelsThisBeam = allPixelsToLeft - pixelsAssigned;
 
                 upsampleWidths[beamNum] = pixelsThisBeam;
                 pixelsAssigned += pixelsThisBeam;
             }
 
-            if (upsampleWidths.Sum() != upsampledBeamCount)
+            if (upsampleWidths.Cast<int>().Sum() != upsampledBeamCount)
             {
                 throw new ApplicationException("invalid total count of upsamples");
             }

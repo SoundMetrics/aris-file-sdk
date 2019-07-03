@@ -10,19 +10,22 @@ namespace SoundMetrics.Aris.BeamWidths.Tests
         [TestMethod]
         public void ValidateKnownConfigsDontThrow()
         {
-            const int scale = 8;
+            const uint scale = 8;
 
             foreach (var config in Metrics.AllBeamConfigurations)
             {
-                var (systemType, beamCount, lens) = config;
+                var (_, beamCount, _) = config;
 
-                var metrics = Metrics.GetBeamInformation(systemType, beamCount, lens);
+                var metrics = Metrics.GetBeamInformation(config);
                 var widths = Upsampling.CalculateUpsampleWidths(scale, metrics);
 
                 var msg = $"in {config}";
                 Assert.IsNotNull(widths, msg);
-                Assert.AreEqual(beamCount, widths.Length, msg);
-                Assert.AreEqual(beamCount * scale, widths.Sum(), msg);
+                Assert.AreEqual(beamCount, (uint)widths.Length, msg);
+                Assert.AreEqual(
+                    beamCount * scale,
+                    (uint)widths.Cast<int>().Sum(), // no Sum for uint??
+                    msg);
 
                 Console.Write($"Upsamples for {config}: ");
                 Console.WriteLine(String.Join(", ", widths));
