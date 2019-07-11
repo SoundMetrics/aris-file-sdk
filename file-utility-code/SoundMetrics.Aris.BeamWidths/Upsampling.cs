@@ -24,7 +24,7 @@ namespace SoundMetrics.Aris.BeamWidths
         /// Passing false will reverse the ordering, putting beam zero on the left.
         /// </param>
         /// <returns>An ordered array of upsampel widths.</returns>
-        public static UpsampleWidth[] CalculateUpsampleWidths(
+        public static UpsampleInfo CalculateUpsampleWidths(
             UInt32 scale,
             BeamInfo[] metrics,
             bool normalOrdering = true)
@@ -79,8 +79,13 @@ namespace SoundMetrics.Aris.BeamWidths
                 throw new ApplicationException("invalid total count of upsamples");
             }
 
-            Array.Reverse(upsampleWidths);
-            return upsampleWidths;
+            if (normalOrdering)
+            {
+                // "Normal" is right-to-left.
+                Array.Reverse(upsampleWidths);
+            }
+
+            return new UpsampleInfo(beamCount, scale, upsampleWidths);
         }
     }
 }

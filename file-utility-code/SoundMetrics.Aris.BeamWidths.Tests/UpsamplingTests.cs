@@ -17,18 +17,18 @@ namespace SoundMetrics.Aris.BeamWidths.Tests
                 var (_, beamCount, _) = config;
 
                 var metrics = Metrics.GetBeamInformation(config);
-                var widths = Upsampling.CalculateUpsampleWidths(scale, metrics);
+                var upsampleInfo = Upsampling.CalculateUpsampleWidths(scale, metrics);
 
                 var msg = $"in {config}";
-                Assert.IsNotNull(widths, msg);
-                Assert.AreEqual(beamCount, (uint)widths.Length, msg);
+                Assert.IsNotNull(upsampleInfo.UpsampledWidths, msg);
+                Assert.AreEqual(beamCount, (uint)upsampleInfo.UpsampledWidths.Length, msg);
                 Assert.AreEqual(
                     beamCount * scale,
-                    (uint)widths.Cast<int>().Sum(), // no Sum for uint??
+                    (uint)upsampleInfo.UpsampledWidths.Cast<int>().Sum(), // no Sum for uint??
                     msg);
 
                 Console.Write($"Upsamples for {config}: ");
-                Console.WriteLine(String.Join(", ", widths));
+                Console.WriteLine(String.Join(", ", upsampleInfo.UpsampledWidths));
                 Console.WriteLine();
             }
         }
