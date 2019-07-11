@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SoundMetrics.Aris.BeamWidths
+﻿namespace SoundMetrics.Aris.BeamWidths
 {
     public struct UpsampleInfo
     {

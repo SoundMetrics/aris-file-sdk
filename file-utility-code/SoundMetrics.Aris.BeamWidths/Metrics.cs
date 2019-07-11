@@ -7,9 +7,7 @@ using System.Linq;
 
 namespace SoundMetrics.Aris.BeamWidths
 {
-    using BeamConfig = ValueTuple<ArisSystemType, UInt32, LensType>;
-
-    public enum LensType { Prime, Telephoto };
+    public enum LensType { None, Telephoto };
 
     public static class Metrics
     {
@@ -58,24 +56,24 @@ namespace SoundMetrics.Aris.BeamWidths
             lookupTable =
                 new Dictionary<BeamConfig, BeamInfo[]>
             {
-                { (ArisSystemType.Aris1200, 48u, LensType.Prime),
+                { new BeamConfig(ArisSystemType.Aris1200, 48u, LensType.None),
                     BeamWidths_ARIS1800_1200_48.BeamWidths },
-                { (ArisSystemType.Aris1200, 48u, LensType.Telephoto),
+                { new BeamConfig(ArisSystemType.Aris1200, 48u, LensType.Telephoto),
                     BeamWidths_ARIS_Telephoto_48.BeamWidths },
 
-                { (ArisSystemType.Aris1800, 48u, LensType.Prime),
+                { new BeamConfig(ArisSystemType.Aris1800, 48u, LensType.None),
                     BeamWidths_ARIS1800_1200_48.BeamWidths },
-                { (ArisSystemType.Aris1800, 48u, LensType.Telephoto),
+                { new BeamConfig(ArisSystemType.Aris1800, 48u, LensType.Telephoto),
                     BeamWidths_ARIS_Telephoto_48.BeamWidths },
 
-                { (ArisSystemType.Aris1800, 96u, LensType.Prime),
+                { new BeamConfig(ArisSystemType.Aris1800, 96u, LensType.None),
                     BeamWidths_ARIS1800_96.BeamWidths },
-                { (ArisSystemType.Aris1800, 96u, LensType.Telephoto),
+                { new BeamConfig(ArisSystemType.Aris1800, 96u, LensType.Telephoto),
                     BeamWidths_ARIS_Telephoto_96.BeamWidths },
 
-                { (ArisSystemType.Aris1800, 64u, LensType.Prime),
+                { new BeamConfig(ArisSystemType.Aris1800, 64u, LensType.None),
                     BeamWidths_ARIS3000_64.BeamWidths },
-                { (ArisSystemType.Aris1800, 128u, LensType.Telephoto),
+                { new BeamConfig(ArisSystemType.Aris1800, 128u, LensType.Telephoto),
                     BeamWidths_ARIS3000_128.BeamWidths },
             };
 
