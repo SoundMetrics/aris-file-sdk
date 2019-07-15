@@ -10,14 +10,14 @@
         /// <summary>
         /// The scale for upsampling; UpsampleScale * BeamCount == UpsampleCounts.Sum().
         /// </summary>
-        public readonly uint UpsampleScale;
+        public readonly int UpsampleScale;
 
         /// <summary>
         /// Upsampled widths for each beam.
         /// </summary>
-        public readonly uint[] UpsampledWidths;
+        public readonly int[] UpsampledWidths;
 
-        internal UpsampleInfo(int beamCount, uint upsampleScale, uint[] upsampledWidths)
+        internal UpsampleInfo(int beamCount, int upsampleScale, int[] upsampledWidths)
         {
             BeamCount = beamCount;
             UpsampleScale = upsampleScale;

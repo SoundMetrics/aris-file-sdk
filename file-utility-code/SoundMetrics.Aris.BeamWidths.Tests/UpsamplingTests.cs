@@ -10,7 +10,7 @@ namespace SoundMetrics.Aris.BeamWidths.Tests
         [TestMethod]
         public void ValidateKnownConfigsDontThrow()
         {
-            const uint scale = 8;
+            const int scale = 8;
 
             foreach (var config in Metrics.AllBeamConfigurations)
             {
@@ -21,10 +21,10 @@ namespace SoundMetrics.Aris.BeamWidths.Tests
 
                 var msg = $"in {config}";
                 Assert.IsNotNull(upsampleInfo.UpsampledWidths, msg);
-                Assert.AreEqual(beamCount, (uint)upsampleInfo.UpsampledWidths.Length, msg);
+                Assert.AreEqual<int>(beamCount, upsampleInfo.UpsampledWidths.Length, msg);
                 Assert.AreEqual(
                     beamCount * scale,
-                    (uint)upsampleInfo.UpsampledWidths.Cast<int>().Sum(), // no Sum for uint??
+                    upsampleInfo.UpsampledWidths.Sum(), // no Sum for uint??
                     msg);
 
                 Console.Write($"Upsamples for {config}: ");

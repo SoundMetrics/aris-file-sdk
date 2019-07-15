@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SoundMetrics.Aris.BeamWidths
 {
-    using UpsampleWidth = UInt32;
+    using UpsampleWidth = Int32;
 
     public static class Upsampling
     {
@@ -25,7 +25,7 @@ namespace SoundMetrics.Aris.BeamWidths
         /// </param>
         /// <returns>An ordered array of upsampel widths.</returns>
         public static UpsampleInfo CalculateUpsampleWidths(
-            UInt32 scale,
+            int scale,
             BeamInfo[] metrics,
             bool normalOrdering = true)
         {
@@ -70,7 +70,7 @@ namespace SoundMetrics.Aris.BeamWidths
                 var allPixelsToLeft = (uint)(Math.Round(localRight / upsampledPixelWidth));
                 var pixelsThisBeam = allPixelsToLeft - pixelsAssigned;
 
-                upsampleWidths[beamNum] = pixelsThisBeam;
+                upsampleWidths[beamNum] = (int)pixelsThisBeam;
                 pixelsAssigned += pixelsThisBeam;
             }
 
