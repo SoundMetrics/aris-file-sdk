@@ -29,7 +29,7 @@ namespace SoundMetrics.Aris.BeamWidths
             }
             else
             {
-                var msg = $"No elemnet found for ({config})";
+                var msg = $"No elemnet found for {config}; {lookupTable.Count} entries";
                 throw new ArgumentOutOfRangeException(msg);
             }
         }
@@ -56,24 +56,24 @@ namespace SoundMetrics.Aris.BeamWidths
             lookupTable =
                 new Dictionary<BeamConfig, BeamInfo[]>
             {
-                { new BeamConfig(ArisSystemType.Aris1200, 48u, LensType.None),
+                { new BeamConfig(ArisSystemType.Aris1200, 48, LensType.None),
                     BeamWidths_ARIS1800_1200_48.BeamWidths },
-                { new BeamConfig(ArisSystemType.Aris1200, 48u, LensType.Telephoto),
+                { new BeamConfig(ArisSystemType.Aris1200, 48, LensType.Telephoto),
                     BeamWidths_ARIS_Telephoto_48.BeamWidths },
 
-                { new BeamConfig(ArisSystemType.Aris1800, 48u, LensType.None),
+                { new BeamConfig(ArisSystemType.Aris1800, 48, LensType.None),
                     BeamWidths_ARIS1800_1200_48.BeamWidths },
-                { new BeamConfig(ArisSystemType.Aris1800, 48u, LensType.Telephoto),
+                { new BeamConfig(ArisSystemType.Aris1800, 48, LensType.Telephoto),
                     BeamWidths_ARIS_Telephoto_48.BeamWidths },
 
-                { new BeamConfig(ArisSystemType.Aris1800, 96u, LensType.None),
+                { new BeamConfig(ArisSystemType.Aris1800, 96, LensType.None),
                     BeamWidths_ARIS1800_96.BeamWidths },
-                { new BeamConfig(ArisSystemType.Aris1800, 96u, LensType.Telephoto),
+                { new BeamConfig(ArisSystemType.Aris1800, 96, LensType.Telephoto),
                     BeamWidths_ARIS_Telephoto_96.BeamWidths },
 
-                { new BeamConfig(ArisSystemType.Aris1800, 64u, LensType.None),
+                { new BeamConfig(ArisSystemType.Aris3000, 64, LensType.None),
                     BeamWidths_ARIS3000_64.BeamWidths },
-                { new BeamConfig(ArisSystemType.Aris1800, 128u, LensType.Telephoto),
+                { new BeamConfig(ArisSystemType.Aris3000, 128, LensType.None),
                     BeamWidths_ARIS3000_128.BeamWidths },
             };
 

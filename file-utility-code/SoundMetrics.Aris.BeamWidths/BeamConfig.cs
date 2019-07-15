@@ -17,7 +17,7 @@ namespace SoundMetrics.Aris.BeamWidths
         /// <summary>
         /// The number of beams in the configuration.
         /// </summary>
-        public readonly UInt32 BeamCount;
+        public readonly int BeamCount;
 
         /// <summary>
         /// The lens type fitted.
@@ -26,7 +26,7 @@ namespace SoundMetrics.Aris.BeamWidths
 
         public BeamConfig(
             ArisSystemType systemType,
-            UInt32 beamCount,
+            int beamCount,
             LensType lensType)
         {
             SystemType = systemType;
@@ -36,12 +36,17 @@ namespace SoundMetrics.Aris.BeamWidths
 
         public void Deconstruct(
             out ArisSystemType systemType,
-            out UInt32 beamCount,
+            out int beamCount,
             out LensType lensType)
         {
             systemType = SystemType;
             beamCount = BeamCount;
             lensType = LensType;
+        }
+
+        public override string ToString()
+        {
+            return $"BeamConfig({SystemType},{BeamCount},{LensType})";
         }
     }
 }
