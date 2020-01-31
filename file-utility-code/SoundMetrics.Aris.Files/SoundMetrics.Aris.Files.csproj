@@ -5,16 +5,16 @@
     <Company>Sound Metrics Corporation</Company>
     <Product>ARIS File SDK</Product>
     <Description>Utility code for checking ARIS files.</Description>
-    <Copyright>Copyright (c) 2015-2018 Sound Metrics Corporation</Copyright>
+    <Copyright>Copyright (c) 2015-2020 Sound Metrics Corporation</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/SoundMetrics/aris-file-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SoundMetrics/aris-file-sdk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1-beta</Version>
+    <Version>2.0.9-alpha</Version>
     <Authors>Sound Metrics Corporation</Authors>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
+    <AssemblyVersion>2.0.9.0</AssemblyVersion>
+    <FileVersion>2.0.9.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
