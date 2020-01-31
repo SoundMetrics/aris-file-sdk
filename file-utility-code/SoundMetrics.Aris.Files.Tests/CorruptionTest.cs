@@ -2,7 +2,7 @@
 
 namespace SoundMetrics.Aris.Files.Tests
 {
-    using global::Aris.FileTypes;
+    using global::SoundMetrics.Aris.Headers;
     using System;
     using System.IO;
     using System.Runtime.InteropServices;

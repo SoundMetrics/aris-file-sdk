@@ -1,6 +1,6 @@
 ﻿// Copyright 2015-2018 Sound Metrics Corp. All Rights Reserved.
 
-using Aris.FileTypes;
+using SoundMetrics.Aris.Headers;
 using System;
 using System.Diagnostics;
 using System.IO;

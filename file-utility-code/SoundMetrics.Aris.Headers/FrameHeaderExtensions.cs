@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-namespace Aris.FileTypes
+namespace SoundMetrics.Aris.Headers
 {
     /// <summary>
     /// Extensions for type FrameHeader.

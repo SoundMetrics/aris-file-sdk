@@ -1,6 +1,6 @@
 ﻿// Copyright 2014-2020 Sound Metrics Corp. All Rights Reserved.
 
-namespace Aris.FileTypes
+namespace SoundMetrics.Aris.Headers
 {
     /// <summary>
     /// ARIS models are defined by which frequencies

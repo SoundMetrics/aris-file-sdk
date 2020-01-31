@@ -1,6 +1,6 @@
 ﻿// Copyright 2015-2020 Sound Metrics Corp. All Rights Reserved.
 
-using Aris.FileTypes;
+using SoundMetrics.Aris.Headers;
 
 namespace SoundMetrics.Aris.BeamWidths
 {
