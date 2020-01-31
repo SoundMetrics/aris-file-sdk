@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SoundMetrics.Aris.AcousticSettings;
 using System.Collections.Generic;
 
 namespace SoundMetrics.Aris.BeamWidths.Tests

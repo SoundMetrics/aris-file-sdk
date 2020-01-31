@@ -1,5 +1,4 @@
-﻿using SoundMetrics.Aris.AcousticSettings;
-using System;
+﻿// Copyright 2015-2020 Sound Metrics Corp. All Rights Reserved.
 
 namespace SoundMetrics.Aris.BeamWidths
 {

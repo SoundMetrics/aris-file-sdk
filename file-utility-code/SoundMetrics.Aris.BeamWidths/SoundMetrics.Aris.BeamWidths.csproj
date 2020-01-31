@@ -10,10 +10,6 @@
     <Folder Include="generated\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="SoundMetrics.Aris.AcousticSettings" Version="1.0.47-alpha.538" />
-  </ItemGroup>
-
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="cd &quot;$(ProjectDir)&quot;&#xD;&#xA;call .\build-beam-width-files.cmd&#xD;&#xA;" />
   </Target>
