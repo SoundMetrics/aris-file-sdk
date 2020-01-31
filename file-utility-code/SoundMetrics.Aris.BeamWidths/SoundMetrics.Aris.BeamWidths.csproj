@@ -10,6 +10,10 @@
     <Folder Include="generated\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SoundMetrics.Aris.Headers\SoundMetrics.Aris.Headers.csproj" />
+  </ItemGroup>
+
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="cd &quot;$(ProjectDir)&quot;&#xD;&#xA;call .\build-beam-width-files.cmd&#xD;&#xA;" />
   </Target>
