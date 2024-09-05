@@ -479,11 +479,17 @@ struct ArisFrameHeader {
     // Note: microseconds
     uint32_t GpsTimeAge;
 
-    // bit 0 = Defender
+    // bit 0 = Defender; bit 1 = Voyager
     uint32_t SystemVariant;
 
+    // <2 = original; 2 = 2024
+    uint32_t CompassRevision;
+
+    // internal use
+    float CompassReserved1;
+
     // Padding to fill out to 1024 bytes
-    char padding[288];
+    char padding[280];
 
 };
 
@@ -820,6 +826,10 @@ enum ArisFrameHeaderOffsets {
     ArisFrameHeaderOffset_GpsTimeAge         =  728,
 
     ArisFrameHeaderOffset_SystemVariant      =  732,
+
+    ArisFrameHeaderOffset_CompassRevision    =  736,
+
+    ArisFrameHeaderOffset_CompassReserved1   =  740,
 
 };
 

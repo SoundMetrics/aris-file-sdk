@@ -5,7 +5,7 @@
 // Disable CS1591 so we don't get a huge number of xmldoc warnings in projects that use it.
 #pragma warning disable CS1591
 
-namespace SoundMetrics.Aris.Headers
+namespace Aris.FileTypes
 {
     
     using System;
@@ -483,11 +483,17 @@ namespace SoundMetrics.Aris.Headers
         // Note: microseconds
         public UInt32 GpsTimeAge;
 
-        // bit 0 = Defender
+        // bit 0 = Defender; bit 1 = Voyager
         public UInt32 SystemVariant;
 
+        // <2 = original; 2 = 2024
+        public UInt32 CompassRevision;
+
+        // internal use
+        public float CompassReserved1;
+
         // Padding to fill out to 1024 bytes
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 288)]
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 280)]
         public string padding;
 
     }
@@ -822,6 +828,10 @@ namespace SoundMetrics.Aris.Headers
         public static UInt32 GpsTimeAge                     =  728;
 
         public static UInt32 SystemVariant                  =  732;
+
+        public static UInt32 CompassRevision                =  736;
+
+        public static UInt32 CompassReserved1               =  740;
 
     }
 
