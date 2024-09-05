@@ -15,7 +15,7 @@ REM ---------------------------------------------------------------------------
 SETLOCAL
 
 SET GEN_HDR_SLN=.\GenerateHeader\GenerateHeader.sln
-SET GEN_HDR_PATH=.\GenerateHeader\GenerateHeader\bin\Release\GenerateHeader.exe
+SET GEN_HDR_PATH=.\GenerateHeader\GenerateHeader\bin\Release\net8.0\GenerateHeader.exe
 
 SET COMMON_CODE_SLN=..\common-code\VisualStudio\CommonCode.sln
 
@@ -69,11 +69,11 @@ REM ---------------------------------------------------------------------------
 
 call GenerateHeader\Release\TestCType.exe ArisFileHeader
 call GenerateHeader\Release\TestCType.exe ArisFileHeaderFieldsOnly
-call GenerateHeader\TestCSharpType\bin\Release\TestCSharpType.exe Aris.FileTypes.ArisFileHeader
+call GenerateHeader\TestCSharpType\bin\Release\net8.0\TestCSharpType.exe Aris.FileTypes.ArisFileHeader
 
 call GenerateHeader\Release\TestCType.exe ArisFrameHeader
 call GenerateHeader\Release\TestCType.exe ArisFrameHeaderFieldsOnly
-call GenerateHeader\TestCSharpType\bin\Release\TestCSharpType.exe Aris.FileTypes.ArisFrameHeader
+call GenerateHeader\TestCSharpType\bin\Release\net8.0\TestCSharpType.exe Aris.FileTypes.ArisFrameHeader
 
 REM ---------------------------------------------------------------------------
 REM Build common native code.

@@ -5,7 +5,7 @@
 // Disable CS1591 so we don't get a huge number of xmldoc warnings in projects that use it.
 #pragma warning disable CS1591
 
-namespace SoundMetrics.Aris.Headers
+namespace Aris.FileTypes
 {
     
     using System;

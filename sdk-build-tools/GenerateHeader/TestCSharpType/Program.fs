@@ -1,5 +1,6 @@
 ﻿// Print the type marshalling size.
 
+open Aris.FileTypes
 open System
 open System.Runtime.InteropServices
 
@@ -7,8 +8,8 @@ let printTypeSize typeName =
 
     let typ =
         match typeName with
-        | "Aris.FileTypes.ArisFileHeader" -> typedefof<Aris.FileTypes.ArisFileHeader>
-        | "Aris.FileTypes.ArisFrameHeader" -> typedefof<Aris.FileTypes.ArisFrameHeader>
+        | "Aris.FileTypes.ArisFileHeader" -> typedefof<ArisFileHeader>
+        | "Aris.FileTypes.ArisFrameHeader" -> typedefof<ArisFrameHeader>
         | _ -> failwith (sprintf "Unexpected type: '%s'" typeName)
     let size = Marshal.SizeOf(typ)
     printfn "%s is %d bytes" typ.FullName size
@@ -17,7 +18,7 @@ let printTypeSize typeName =
 let main argv =
 
     // Ensure the assembly is loaded.
-    typedefof<Aris.FileTypes.ArisFileHeader>.FullName |> ignore
+    typedefof<ArisFileHeader>.FullName |> ignore
 
     try
         match argv with

@@ -1,9 +1,9 @@
 ﻿// Parse a type definition and generate source code.
 
+open CommandLine
 open FieldParser
 open System
 open System.IO
-open System.Text
 
 let validateInputs (options : ProgramOptions.Options) =
 
@@ -43,27 +43,34 @@ let getProducer (language : string) =
 [<EntryPoint>]
 let main argv =
 
-    let options = ProgramOptions.Options()
-    if CommandLine.Parser.Default.ParseArguments(argv, options) then
-        try
-            validateInputs options
+    use parser = new CommandLine.Parser()
+    let mutable exitCode = 255
 
-            printfn "Input folder: %s" (Path.GetFullPath(options.InputFolder))
-            printfn "Output file:  %s" (Path.GetFullPath(options.OutputPath))
-            printfn "Language:     %s" options.Language
+    let r = parser.ParseArguments<ProgramOptions.Options>(argv)
+                .WithParsed(fun options ->
+                    try
+                        validateInputs options
 
-            let filename = Path.GetFileName(options.OutputPath)
-            let producer = getProducer options.Language
-            let fieldInput, typeInput = openFiles options.InputFolder
-            use output = new StreamWriter(
-                            File.Open(options.OutputPath, FileMode.Create, FileAccess.Write, FileShare.None))
+                        printfn "Input folder: %s" (Path.GetFullPath(options.InputFolder))
+                        printfn "Output file:  %s" (Path.GetFullPath(options.OutputPath))
+                        printfn "Language:     %s" options.Language
 
-            processStream filename options.Modifier producer typeInput fieldInput output
+                        let filename = Path.GetFileName(options.OutputPath)
+                        let producer = getProducer options.Language
+                        let fieldInput, typeInput = openFiles options.InputFolder
+                        use output = new StreamWriter(
+                                        File.Open(options.OutputPath, FileMode.Create, FileAccess.Write, FileShare.None))
 
-            0
-        with
-            ex -> Console.Error.WriteLine(sprintf "An error occurred: %s" ex.Message)
-                  -1
-    else
+                        processStream filename options.Modifier producer typeInput fieldInput output
+
+                        exitCode <- 0
+                    with
+                        ex -> Console.Error.WriteLine(sprintf "An error occurred: %s" ex.Message)
+                              exitCode <- -1
+                )
+
+    if r :? NotParsed<ProgramOptions.Options> then
         Console.Error.WriteLine("Invalid options.")
-        -2
+        exitCode <- -2
+
+    exitCode
