@@ -14,6 +14,8 @@ REM ---------------------------------------------------------------------------
 
 SETLOCAL
 
+CALL %~dp0\..\init-dev-environment.cmd
+
 SET GEN_HDR_SLN=.\GenerateHeader\GenerateHeader.sln
 SET GEN_HDR_PATH=.\GenerateHeader\GenerateHeader\bin\Release\net8.0\GenerateHeader.exe
 
