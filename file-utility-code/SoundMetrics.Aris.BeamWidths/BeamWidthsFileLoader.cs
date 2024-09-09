@@ -41,7 +41,8 @@ namespace SoundMetrics.Aris.BeamWidths
             // Example line:
             //      DEFINE_BEAMWIDTH3(47, 7.339, 7.345, 7.487)
 
-            var splits = line.Split([',', ' ', '\t', '(', ')'], StringSplitOptions.RemoveEmptyEntries);
+            char[] delims = [',', ' ', '\t', '(', ')']; // Build machine said inline was ambiguous.
+            var splits = line.Split(delims, StringSplitOptions.RemoveEmptyEntries);
 
             return splits switch
             {
