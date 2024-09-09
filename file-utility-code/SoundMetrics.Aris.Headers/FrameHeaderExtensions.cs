@@ -1,5 +1,6 @@
 ﻿// Copyright 2015-2020 Sound Metrics Corp. All Rights Reserved.
 
+using Aris.FileTypes;
 using System.Collections.Generic;
 
 namespace SoundMetrics.Aris.Headers

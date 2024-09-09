@@ -1,21 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <PackageId />
     <Version>2.0.9-alpha</Version>
   </PropertyGroup>
-
   <ItemGroup>
-    <Folder Include="generated\" />
-  </ItemGroup>
 
-  <ItemGroup>
     <ProjectReference Include="..\SoundMetrics.Aris.Headers\SoundMetrics.Aris.Headers.csproj" />
   </ItemGroup>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="cd &quot;$(ProjectDir)&quot;&#xD;&#xA;call .\build-beam-width-files.cmd&#xD;&#xA;" />
-  </Target>
-
+  <ItemGroup>
+    <Folder Include="beam-width-metrics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\beam-width-metrics\BeamWidths_ARIS1800_1200_48.h" Link="beam-width-metrics\BeamWidths_ARIS1800_1200_48.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\beam-width-metrics\BeamWidths_ARIS1800_96.h" Link="beam-width-metrics\BeamWidths_ARIS1800_96.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\beam-width-metrics\BeamWidths_ARIS3000_128.h" Link="beam-width-metrics\BeamWidths_ARIS3000_128.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\beam-width-metrics\BeamWidths_ARIS3000_64.h" Link="beam-width-metrics\BeamWidths_ARIS3000_64.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\beam-width-metrics\BeamWidths_ARIS_Telephoto_48.h" Link="beam-width-metrics\BeamWidths_ARIS_Telephoto_48.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\beam-width-metrics\BeamWidths_ARIS_Telephoto_96.h" Link="beam-width-metrics\BeamWidths_ARIS_Telephoto_96.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

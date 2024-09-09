@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Company>Sound Metrics Corporation</Company>
     <Product>ARIS File SDK</Product>
     <Description>Utility code for checking ARIS files.</Description>
@@ -16,29 +15,20 @@
     <AssemblyVersion>2.0.9.0</AssemblyVersion>
     <FileVersion>2.0.9.0</FileVersion>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <DocumentationFile>bin\Debug\netstandard2.0\SoundMetrics.Aris.Files.xml</DocumentationFile>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard2.0\SoundMetrics.Aris.Files.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="REM Assumes building on Windows.&#xD;&#xA;&#xD;&#xA;SETLOCAL&#xD;&#xA;&#xD;&#xA;SET SIGN_SCRIPT=$(ProjectDir)..\..\submodules\build-tools\SignBinary.cmd&#xD;&#xA;call &quot;%SIGN_SCRIPT%&quot; &quot;&quot; $(Configuration) $(TargetPath)&#xD;&#xA;&#xD;&#xA;ENDLOCAL&#xD;&#xA;" />
-  </Target>
-
   <ItemGroup>
     <PackageReference Include="Serilog" Version="2.8.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\SoundMetrics.Aris.Headers\SoundMetrics.Aris.Headers.csproj" />
   </ItemGroup>
-
 </Project>

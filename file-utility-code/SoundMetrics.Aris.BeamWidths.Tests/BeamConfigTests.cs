@@ -34,7 +34,7 @@ namespace SoundMetrics.Aris.BeamWidths.Tests
                 var (systemType, beamCount, lensType) = cfg;
                 var cfg2 = new BeamConfig(systemType, beamCount, lensType);
                 var info = Metrics.GetBeamInformation(cfg2);
-                Assert.IsNotNull(info);
+                Assert.IsNotNull(info, "Couldn't get beam info");
             }
         }
     }

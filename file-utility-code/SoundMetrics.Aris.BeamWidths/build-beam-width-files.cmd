@@ -1,14 +1,10 @@
-SET SOL_DIR=%1
-SET ALT_SOL_DIR=..\
-IF "%SOL_DIR%" == "" SET SOL_DIR=%ALT_SOL_DIR%
-IF "%SOL_DIR%" == "*Undefined*" SET SOL_DIR=%ALT_SOL_DIR%
-echo SOL_DIR is %SOL_DIR%
+CALL %~dp0\..\..\init-dev-environment.cmd
 
-SET PROJ_DIR=%2
-SET ALT_PROJ_DIR=%SOL_DIR%\SoundMetrics.Aris.BeamWidths\
-IF "%PROJ_DIR%" == "" SET PROJ_DIR=%ALT_PROJ_DIR%
-IF "%PROJ_DIR%" == "*Undefined*" SET PROJ_DIR=%ALT_PROJ_DIR%
-echo PROJ_DIR is %PROJ_DIR%
+SET PROJ_DIR=%~dp0
+SET SOL_DIR=%PROJ_DIR%\..\
+
+ECHO PROJ_DIR=[%PROJ_DIR%]
+ECHO SOL_DIR=[%SOL_DIR%]
 
 IF NOT EXIST "%PROJ_DIR%\generated" MKDIR "%PROJ_DIR%\generated"
 

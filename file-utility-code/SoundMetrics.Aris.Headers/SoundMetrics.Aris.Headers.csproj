@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Authors>Sound Metrics Corporation</Authors>
     <Company>Sound Metrics Corporation</Company>
     <Copyright>Copyright (c) 2015-2020 Sound Metrics Corporation</Copyright>
@@ -18,26 +17,18 @@
     <FileVersion>2.0.9.0</FileVersion>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <DocumentationFile>bin\Release\netstandard2.0\SoundMetrics.Aris.Headers.xml</DocumentationFile>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <DocumentationFile>bin\Debug\netstandard2.0\SoundMetrics.Aris.Headers.xml</DocumentationFile>
   </PropertyGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="REM Assumes building on Windows.&#xD;&#xA;&#xD;&#xA;SETLOCAL&#xD;&#xA;&#xD;&#xA;SET SIGN_SCRIPT=$(ProjectDir)..\..\submodules\build-tools\SignBinary.cmd&#xD;&#xA;call &quot;%SIGN_SCRIPT%&quot; &quot;&quot; $(Configuration) $(TargetPath)&#xD;&#xA;&#xD;&#xA;ENDLOCAL&#xD;&#xA;" />
-  </Target>
-
   <ItemGroup>
     <Compile Include="..\..\type-definitions\CSharp\FileHeader.cs" Link="FileHeader.cs" />
     <Compile Include="..\..\type-definitions\CSharp\FrameHeader.cs" Link="FrameHeader.cs" />
   </ItemGroup>
-
 </Project>

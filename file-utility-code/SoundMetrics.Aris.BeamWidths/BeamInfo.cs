@@ -30,5 +30,8 @@ namespace SoundMetrics.Aris.BeamWidths
         /// rightS of this beam.
         /// </summary>
         public float Right;
+
+        public override string ToString()
+            => $"BeamInfo {{ BeamNumber = {BeamNumber}, Center = {Center}, Left = {Left}, Right = {Right} }}";
     }
 }
