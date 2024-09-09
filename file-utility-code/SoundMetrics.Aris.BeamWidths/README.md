@@ -2,12 +2,11 @@
 
 ## Generated Code Inside
 
-This project uses a command script to build C# files in ./generated. These files
-contain the beam with metrics.
+This project parses the metrics files at runtime in order to build the beam widths tables.
+The project must therefore include the metrics files as content and deliver it for deployment.
 
-**However,** there is a problem. The new dotnet project format appears to resolve
-files before running the "pre-build" script, so the generated files are not part
-of the build if they're not already on disk. So the project fails to build on first attempt.
-
-A second attempt at building will succeed. The build server will run the script as a
-precursor step to building this project.
+> Note: we have looked at using a source generator and it proved near-impossible to debug in the
+VS 2022 timeframe. Therefore, we opted to parse at runtime. (This was all brought on by the change
+in dotnet Core's way of determining build dependencies--if you generate code in a script in the pre-build
+event or in a project on which you depend, those files don't exist at the time of dependency checking, so
+it appears.)
