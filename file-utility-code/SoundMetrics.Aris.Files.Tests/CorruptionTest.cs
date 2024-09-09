@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Aris.FileTypes;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SoundMetrics.Aris.Files.Tests
 {

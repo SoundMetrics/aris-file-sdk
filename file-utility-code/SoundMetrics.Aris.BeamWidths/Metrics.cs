@@ -53,28 +53,30 @@ namespace SoundMetrics.Aris.BeamWidths
 
         static Metrics()
         {
+            var rawData = new BeamWidthsRaw();
+
             lookupTable =
                 new Dictionary<BeamConfig, BeamInfo[]>
             {
                 { new BeamConfig(ArisSystemType.Aris1200, 48, LensType.None),
-                    BeamWidths_ARIS1800_1200_48.BeamWidths },
+                    rawData.BeamWidths_ARIS1800_1200_48 },
                 { new BeamConfig(ArisSystemType.Aris1200, 48, LensType.Telephoto),
-                    BeamWidths_ARIS_Telephoto_48.BeamWidths },
+                    rawData.BeamWidths_ARIS_Telephoto_48 },
 
                 { new BeamConfig(ArisSystemType.Aris1800, 48, LensType.None),
-                    BeamWidths_ARIS1800_1200_48.BeamWidths },
+                    rawData.BeamWidths_ARIS1800_1200_48 },
                 { new BeamConfig(ArisSystemType.Aris1800, 48, LensType.Telephoto),
-                    BeamWidths_ARIS_Telephoto_48.BeamWidths },
+                    rawData.BeamWidths_ARIS_Telephoto_48 },
 
                 { new BeamConfig(ArisSystemType.Aris1800, 96, LensType.None),
-                    BeamWidths_ARIS1800_96.BeamWidths },
+                    rawData.BeamWidths_ARIS1800_96 },
                 { new BeamConfig(ArisSystemType.Aris1800, 96, LensType.Telephoto),
-                    BeamWidths_ARIS_Telephoto_96.BeamWidths },
+                    rawData.BeamWidths_ARIS_Telephoto_96 },
 
                 { new BeamConfig(ArisSystemType.Aris3000, 64, LensType.None),
-                    BeamWidths_ARIS3000_64.BeamWidths },
+                    rawData.BeamWidths_ARIS3000_64 },
                 { new BeamConfig(ArisSystemType.Aris3000, 128, LensType.None),
-                    BeamWidths_ARIS3000_128.BeamWidths },
+                    rawData.BeamWidths_ARIS3000_128 },
             };
 
             knownConfigurations = lookupTable.Keys.ToArray();
