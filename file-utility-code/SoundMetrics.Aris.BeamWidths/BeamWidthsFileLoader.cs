@@ -57,9 +57,9 @@ namespace SoundMetrics.Aris.BeamWidths
             return new BeamInfo
             {
                 BeamNumber = uint.Parse(beamNumber),
-                Center = float.Parse(center),
-                Left = float.Parse(left),
-                Right = float.Parse(right),
+                Center = double.Parse(center),
+                Left = double.Parse(left),
+                Right = double.Parse(right),
             };
         }
     }

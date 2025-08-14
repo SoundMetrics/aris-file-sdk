@@ -17,19 +17,19 @@ namespace SoundMetrics.Aris.BeamWidths
         /// Degrees off the middle of the field of vision for the
         /// center of this beam.
         /// </summary>
-        public float Center;
+        public double Center;
 
         /// <summary>
         /// Degrees off the middle of the field of vision for the
         /// left of this beam.
         /// </summary>
-        public float Left;
+        public double Left;
 
         /// <summary>
         /// Degrees off the middle of the field of vision for the
         /// rightS of this beam.
         /// </summary>
-        public float Right;
+        public double Right;
 
         public override string ToString()
             => $"BeamInfo {{ BeamNumber = {BeamNumber}, Center = {Center}, Left = {Left}, Right = {Right} }}";
