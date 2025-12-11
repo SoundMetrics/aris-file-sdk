@@ -13,7 +13,7 @@ namespace Aris.FileTypes
 
     // Defines the metadata at the start of an ARIS recording.
     [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]
-    public struct ArisFileHeader
+    public unsafe struct ArisFileHeader
     {
         public const uint ArisFileSignature =  0x05464444;
         public const uint ArisFrameSignature = 0x05464444;

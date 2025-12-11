@@ -96,7 +96,7 @@ let produce filename (output : TextWriter) (_modifier : string) (indent : Indent
         writeUnbrokenLine output indent
             "[StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Ansi)]"
 
-        writeUnbrokenLine output indent (sprintf "public struct %s" typeInfo.typeName)
+        writeUnbrokenLine output indent (sprintf "public unsafe struct %s" typeInfo.typeName)
         writeUnbrokenLine output indent "{"
 
         writeUnbrokenLine output (indent.Indent()) "public const uint ArisFileSignature =  0x05464444;"
