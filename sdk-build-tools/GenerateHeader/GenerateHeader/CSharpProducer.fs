@@ -124,19 +124,28 @@ let produce filename (output : TextWriter) (_modifier : string) (indent : Indent
             if field.obsoleteNote.Length > 0 then
                 writeUnbrokenLine output indent (sprintf "[Obsolete(\"%s\")]" field.obsoleteNote)
 
-            match field.fieldCat with
-            | Scalar -> ()
-            | Vector size ->
-                writeUnbrokenLine output indent
-                    (sprintf "[MarshalAs(%s, SizeConst = %d)]" marshalMap.[field.typ] size)
+            //match field.fieldCat with
+            //| Scalar -> ()
+            //| Vector size ->
+            //    writeUnbrokenLine output indent
+            //        (sprintf "[MarshalAs(%s, SizeConst = %d)]" marshalMap.[field.typ] size)
 
             let arraySuffix =
                 match field.fieldCat with
                 | Scalar -> ""
                 | Vector _ -> arraySuffixMap.[field.typ]
 
-            writeUnbrokenLine output indent
-                (sprintf "public %s%s %s;" (typeMap.[field.typ]) arraySuffix field.name)
+            match field.fieldCat with
+            | Vector size ->
+                let typ = if typeMap.[field.typ] = "string" then
+                            "byte"
+                          else
+                            typeMap.[field.typ]
+                writeUnbrokenLine output indent
+                    (sprintf "public fixed %s %s[%d];" typ field.name size)
+            | _ ->
+                writeUnbrokenLine output indent
+                    (sprintf "public %s%s %s;" (typeMap.[field.typ]) arraySuffix field.name)
 
             output.WriteLine()
 

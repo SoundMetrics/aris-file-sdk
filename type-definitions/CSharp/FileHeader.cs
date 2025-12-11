@@ -65,12 +65,10 @@ namespace Aris.FileTypes
         public UInt32 SN;
 
         // Date that file was recorded
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-        public string strDate;
+        public fixed byte strDate[32];
 
         // User input to identify file in 256 characters
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-        public string strHeaderID;
+        public fixed byte strHeaderID[256];
 
         // User-defined integer quantity
         public int UserID1;
@@ -161,8 +159,7 @@ namespace Aris.FileTypes
         public UInt32 LargeLens;
 
         // Padding to fill out to 1024 bytes
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 568)]
-        public string padding;
+        public fixed byte padding[568];
 
     }
 

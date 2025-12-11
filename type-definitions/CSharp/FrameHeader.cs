@@ -247,8 +247,7 @@ namespace Aris.FileTypes
         public float SonarZOffset;
 
         // 3D processing transformation matrix
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
-        public float[] Tmatrix;
+        public fixed float Tmatrix[16];
 
         // Calculated as 1e6/SamplePeriod
         public float SampleRate;
@@ -493,8 +492,7 @@ namespace Aris.FileTypes
         public float CompassReserved1;
 
         // Padding to fill out to 1024 bytes
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 280)]
-        public string padding;
+        public fixed byte padding[280];
 
     }
 
