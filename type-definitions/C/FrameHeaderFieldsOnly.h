@@ -1,7 +1,7 @@
     // Frame number in file
     uint32_t FrameIndex;
 
-    // PC time stamp when recorded; microseconds since epoch (Jan 1st 1970)
+    // On-sonar microseconds since epoch (Jan 1st 1970)
     uint64_t FrameTime;
 
     // ARIS file format version = 0x05464444
@@ -9,8 +9,8 @@
 
     uint32_t Status;
 
-    // On-sonar microseconds since epoch (Jan 1st 1970)
-    uint64_t sonarTimeStamp;
+    // PC time stamp when recorded; microseconds since epoch (Jan 1st 1970)
+    uint64_t PCTimeStamp;
 
     uint32_t TS_Day;
 

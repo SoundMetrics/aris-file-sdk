@@ -1,9 +1,9 @@
 Name,Type,Array,Description,Note,Obsolete
 FrameIndex,uint,,Frame number in file,,,
-FrameTime,uint64,,PC time stamp when recorded; microseconds since epoch (Jan 1st 1970),,,
+FrameTime,uint64,,On-sonar microseconds since epoch (Jan 1st 1970),,,
 Version,uint,,ARIS file format version = 0x05464444,,,
 Status,uint,,,,,
-sonarTimeStamp,uint64,,On-sonar microseconds since epoch (Jan 1st 1970),,,
+PCTimeStamp,uint64,,PC time stamp when recorded; microseconds since epoch (Jan 1st 1970),,,
 TS_Day,uint,,,,,
 TS_Hour,uint,,,,,
 TS_Minute,uint,,,,,

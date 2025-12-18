@@ -21,7 +21,7 @@ namespace Aris.FileTypes
         // Frame number in file
         public UInt32 FrameIndex;
 
-        // PC time stamp when recorded; microseconds since epoch (Jan 1st 1970)
+        // On-sonar microseconds since epoch (Jan 1st 1970)
         public UInt64 FrameTime;
 
         // ARIS file format version = 0x05464444
@@ -29,8 +29,8 @@ namespace Aris.FileTypes
 
         public UInt32 Status;
 
-        // On-sonar microseconds since epoch (Jan 1st 1970)
-        public UInt64 sonarTimeStamp;
+        // PC time stamp when recorded; microseconds since epoch (Jan 1st 1970)
+        public UInt64 PCTimeStamp;
 
         public UInt32 TS_Day;
 
@@ -506,7 +506,7 @@ namespace Aris.FileTypes
 
         public static UInt32 Status                         =   16;
 
-        public static UInt32 sonarTimeStamp                 =   20;
+        public static UInt32 PCTimeStamp                    =   20;
 
         public static UInt32 TS_Day                         =   28;
 

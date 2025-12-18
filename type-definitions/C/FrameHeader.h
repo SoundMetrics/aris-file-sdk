@@ -18,7 +18,7 @@ struct ArisFrameHeader {
     // Frame number in file
     uint32_t FrameIndex;
 
-    // PC time stamp when recorded; microseconds since epoch (Jan 1st 1970)
+    // On-sonar microseconds since epoch (Jan 1st 1970)
     uint64_t FrameTime;
 
     // ARIS file format version = 0x05464444
@@ -26,8 +26,8 @@ struct ArisFrameHeader {
 
     uint32_t Status;
 
-    // On-sonar microseconds since epoch (Jan 1st 1970)
-    uint64_t sonarTimeStamp;
+    // PC time stamp when recorded; microseconds since epoch (Jan 1st 1970)
+    uint64_t PCTimeStamp;
 
     uint32_t TS_Day;
 
@@ -506,7 +506,7 @@ enum ArisFrameHeaderOffsets {
 
     ArisFrameHeaderOffset_Status             =   16,
 
-    ArisFrameHeaderOffset_sonarTimeStamp     =   20,
+    ArisFrameHeaderOffset_PCTimeStamp        =   20,
 
     ArisFrameHeaderOffset_TS_Day             =   28,
 
